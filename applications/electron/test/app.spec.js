@@ -49,7 +49,7 @@ function getElectronMainJS() {
         return path.join(
         distFolder,
         macFolder,
-        'TheiaIDE.app',
+        'InterlisIDE.app',
         'Contents',
         'Resources',
         'app',
@@ -107,17 +107,17 @@ function getBinaryPath() {
       return path.join(
         distFolder,
         'win-unpacked',
-        'TheiaIDE.exe'
+        'InterlisIDE.exe'
       );
     case 'darwin':
       const macFolder = isMacArm() ? 'mac-arm64' : 'mac';
       const binaryPath = path.join(
         distFolder,
         macFolder,
-        'TheiaIDE.app',
+        'InterlisIDE.app',
         'Contents',
         'MacOS',
-        'TheiaIDE'
+        'InterlisIDE'
       );
       console.log(`Using binary path for Mac ${isMacArm() ? 'ARM64' : 'Intel'}: ${binaryPath}`);
       return binaryPath;
@@ -138,7 +138,7 @@ function macSafeKeyCombo(keys) {
   return keys;
 };
 
-describe('Theia App', function () {
+describe('INTERLIS IDE App', function () {
   // In mocha, 'this' is a common context between sibling beforeEach, afterEach, it, etc methods within the same describe.
   // Each describe has its own context.
   before(async function () {

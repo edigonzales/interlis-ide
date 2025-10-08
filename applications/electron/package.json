@@ -1,8 +1,8 @@
 {
   "private": true,
   "name": "theia-ide-electron-app",
-  "description": "Eclipse Theia IDE product",
-  "productName": "Theia IDE",
+  "description": "INTERLIS IDE product",
+  "productName": "InterlisIDE",
   "version": "1.65.100",
   "main": "scripts/theia-electron-main.js",
   "license": "MIT",
@@ -23,7 +23,7 @@
     "target": "electron",
     "frontend": {
       "config": {
-        "applicationName": "Theia IDE",
+        "applicationName": "INTERLIS IDE",
         "reloadOnReconnect": true,
         "preferences": {
           "toolbar.showToolbar": true,
@@ -32,9 +32,9 @@
         "electron": {
           "showWindowEarly": false,
           "splashScreenOptions": {
-            "content": "resources/TheiaIDESplash.svg",
-            "height": 276,
-            "width": 446
+            "content": "resources/interlis-splash.html",
+            "height": 386,
+            "width": 600
           }
         }
       }
