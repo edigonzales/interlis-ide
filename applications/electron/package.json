@@ -32,9 +32,9 @@
         "electron": {
           "showWindowEarly": false,
           "splashScreenOptions": {
-            "content": "resources/oldinterlis.png",
-            "height": 644,
-            "width": 1002
+            "content": "resources/interlis-splash.html",
+            "height": 386,
+            "width": 600
           }
         }
       }

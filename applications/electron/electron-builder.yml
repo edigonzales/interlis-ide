@@ -21,6 +21,7 @@ files:
   - lib
   - resources/icons/WindowIcon/512-512.png
   - resources/oldinterlis.png
+  - resources/interlis-splash.html
   - scripts
   - "!**node_modules/**"
 extraResources:
