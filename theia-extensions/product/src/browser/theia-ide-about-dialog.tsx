@@ -95,9 +95,11 @@ export class TheiaIDEAboutDialog extends AboutDialog {
     protected renderVersion(): React.ReactNode {
         return <div>
             <p className='gs-sub-header' >
-                {this.applicationInfo ? 'Version ' + this.applicationInfo.version : '-'}
+                {'Version 0.0.1'}
             </p>
-
+            <p className='gs-sub-header' >
+                {'Copyright (c) 2025 Amt für Geoinformation, Kanton Solothurn'}
+            </p>
             <p className='gs-sub-header' >
                 {'VS Code API Version: ' + this.vscodeApiVersion}
             </p>
