@@ -14,6 +14,7 @@ import { renderDocumentation, renderDownloads, renderSourceCode, renderSupport, 
 import { VSXEnvironment } from '@theia/vsx-registry/lib/common/vsx-environment';
 import { WindowService } from '@theia/core/lib/browser/window/window-service';
 import { FrontendApplicationConfigProvider } from '@theia/core/lib/browser/frontend-application-config-provider';
+import { ProductAboutConfiguration } from '../common/about-config';
 
 @injectable()
 export class TheiaIDEAboutDialog extends AboutDialog {
@@ -25,7 +26,7 @@ export class TheiaIDEAboutDialog extends AboutDialog {
     protected readonly windowService: WindowService;
 
     protected vscodeApiVersion: string;
-    protected readonly aboutConfig: TheiaIDEAboutDialog.AboutConfiguration;
+    protected readonly aboutConfig: ProductAboutConfiguration;
 
     constructor(
         @inject(AboutDialogProps) protected readonly props: AboutDialogProps
@@ -115,15 +116,10 @@ export class TheiaIDEAboutDialog extends AboutDialog {
         </div>;
     }
 
-    protected resolveAboutConfig(): TheiaIDEAboutDialog.AboutConfiguration {
-        const config = FrontendApplicationConfigProvider.get() as { about?: TheiaIDEAboutDialog.AboutConfiguration };
+    protected resolveAboutConfig(): ProductAboutConfiguration {
+        const config = FrontendApplicationConfigProvider.get() as { about?: ProductAboutConfiguration };
         return config.about ?? {};
     }
 }
 
-export namespace TheiaIDEAboutDialog {
-    export interface AboutConfiguration {
-        productVersionLabel?: string;
-        copyright?: string;
-    }
-}
+export namespace TheiaIDEAboutDialog { }
