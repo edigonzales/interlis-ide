@@ -11,7 +11,6 @@ import * as path from 'path';
 
 import { ElectronMainApplication, ElectronMainApplicationContribution } from '@theia/core/lib/electron-main/electron-main-application';
 import { app, nativeImage } from '@theia/core/electron-shared/electron';
-import type { AboutPanelOptions } from '@theia/core/electron-shared/electron';
 import { injectable } from '@theia/core/shared/inversify';
 
 import { ProductAboutConfiguration } from '../common/about-config';
@@ -29,7 +28,7 @@ export class AboutPanelContribution implements ElectronMainApplicationContributi
         const applicationVersion = this.resolveProductVersionLabel(aboutConfiguration);
         const buildVersion = app.getVersion();
         const shouldDisplayBuildVersion = Boolean(buildVersion && !applicationVersion.includes(buildVersion));
-        const options: AboutPanelOptions = {
+        const options: Parameters<typeof app.setAboutPanelOptions>[0] = {
             applicationName,
             applicationVersion,
         };
