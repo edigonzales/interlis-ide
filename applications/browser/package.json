@@ -28,6 +28,10 @@
           "files.enableTrash": false,
           "security.workspace.trust.enabled": false
         },
+        "about": {
+          "productVersionLabel": "Version 0.0.1",
+          "copyright": "Copyright (c) 2025 Amt für Geoinformation, Kanton Solothurn"
+        },
         "reloadOnReconnect": true
       }
     },
