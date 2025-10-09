@@ -13,6 +13,8 @@ import { injectable, inject } from '@theia/core/shared/inversify';
 import { renderDocumentation, renderDownloads, renderSourceCode, renderSupport, renderTickets, renderWhatIs } from './branding-util';
 import { VSXEnvironment } from '@theia/vsx-registry/lib/common/vsx-environment';
 import { WindowService } from '@theia/core/lib/browser/window/window-service';
+import { FrontendApplicationConfigProvider } from '@theia/core/lib/browser/frontend-application-config-provider';
+import { ProductAboutConfiguration } from '../common/about-config';
 
 @injectable()
 export class TheiaIDEAboutDialog extends AboutDialog {
@@ -24,11 +26,13 @@ export class TheiaIDEAboutDialog extends AboutDialog {
     protected readonly windowService: WindowService;
 
     protected vscodeApiVersion: string;
+    protected readonly aboutConfig: ProductAboutConfiguration;
 
     constructor(
         @inject(AboutDialogProps) protected readonly props: AboutDialogProps
     ) {
         super(props);
+        this.aboutConfig = this.resolveAboutConfig();
     }
 
     protected async doInit(): Promise<void> {
@@ -93,14 +97,29 @@ export class TheiaIDEAboutDialog extends AboutDialog {
     }
 
     protected renderVersion(): React.ReactNode {
+        const applicationVersion = this.applicationInfo?.version;
+        const configuredVersionLabel = this.aboutConfig.productVersionLabel;
+        const displayVersionLabel = configuredVersionLabel ?? (applicationVersion ? `Version ${applicationVersion}` : undefined);
+        const shouldAppendApplicationVersion = Boolean(applicationVersion && displayVersionLabel && !displayVersionLabel.includes(applicationVersion));
+        const versionLine = displayVersionLabel ?? 'Version information unavailable';
+        const copyrightLine = this.aboutConfig.copyright ?? 'Copyright (c) 2025 Amt für Geoinformation, Kanton Solothurn';
         return <div>
             <p className='gs-sub-header' >
-                {this.applicationInfo ? 'Version ' + this.applicationInfo.version : '-'}
+                {shouldAppendApplicationVersion ? `${versionLine} (${applicationVersion})` : versionLine}
             </p>
-
+            <p className='gs-sub-header' >
+                {copyrightLine}
+            </p>
             <p className='gs-sub-header' >
                 {'VS Code API Version: ' + this.vscodeApiVersion}
             </p>
         </div>;
     }
+
+    protected resolveAboutConfig(): ProductAboutConfiguration {
+        const config = FrontendApplicationConfigProvider.get() as { about?: ProductAboutConfiguration };
+        return config.about ?? {};
+    }
 }
+
+export namespace TheiaIDEAboutDialog { }
