@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@800&display=swap');
+
+:root {
+  --ifm-color-primary: #0564a9;
+  --ifm-color-primary-dark: #045990;
+  --ifm-color-primary-darker: #034b79;
+  --ifm-color-primary-darkest: #02355a;
+  --ifm-color-primary-light: #0674c4;
+  --ifm-color-primary-lighter: #0783dd;
+  --ifm-color-primary-lightest: #1396f4;
+  --ifm-button-border-radius: 999px;
+  --ifm-code-font-size: 95%;
+  --ifm-heading-font-family: 'Sora', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --ifm-heading-font-weight: 800;
+  --ifm-font-family-base: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --docusaurus-highlighted-code-line-bg: rgba(5, 100, 169, 0.08);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #4ca9ff;
+  --ifm-color-primary-dark: #3798f2;
+  --ifm-color-primary-darker: #1f87e6;
+  --ifm-color-primary-darkest: #0066c3;
+  --ifm-color-primary-light: #63b5ff;
+  --ifm-color-primary-lighter: #7cc0ff;
+  --ifm-color-primary-lightest: #a3d4ff;
+  --docusaurus-highlighted-code-line-bg: rgba(76, 169, 255, 0.18);
+}
+
+.hero--primary {
+  color: #f5fbff;
+}
+
+.main-wrapper {
+  background: radial-gradient(circle at top, rgba(5, 100, 169, 0.08), transparent 60%) no-repeat;
+}
+
+.navbar__logo img {
+  height: 32px;
+  width: auto;
+}
+
+.heroActions .button--secondary {
+  background-color: #da251f;
+  border-color: #da251f;
+  color: #ffffff;
+}
+
+.heroActions .button {
+  font-weight: 600;
+}
+
+.heroActions .button--secondary:hover {
+  background-color: #b81f1b;
+  border-color: #b81f1b;
+  color: #ffffff;
+}
+
+.heroActions .button--outline {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.65);
+}
+
+.heroActions .button--outline:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
