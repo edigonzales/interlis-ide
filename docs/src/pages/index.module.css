@@ -57,19 +57,16 @@
   gap: 3rem;
 }
 
-.infoList {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.infoPreviewStandalone {
+  display: block;
 }
 
-.infoList li {
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-}
-
-.infoList li a {
-  color: var(--ifm-link-color);
+.infoPreviewStandalone img {
+  display: block;
+  width: 100%;
+  max-width: none;
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(3, 35, 76, 0.22);
 }
 
 @media screen and (max-width: 996px) {
@@ -88,5 +85,9 @@
 
   .infoGrid {
     grid-template-columns: 1fr;
+  }
+
+  .infoPreviewStandalone {
+    display: block;
   }
 }

@@ -47,22 +47,11 @@ function InformationStripes(): ReactNode {
               ergonomics.
             </p>
           </div>
-          <div>
-            <h2>Documentation map</h2>
-            <ul className={styles.infoList}>
-              <li>
-                <Link to="/docs/getting-started/installation">Install the IDE and docs toolchain</Link>
-              </li>
-              <li>
-                <Link to="/docs/guides/editor-experience">Master the editor experience</Link>
-              </li>
-              <li>
-                <Link to="/docs/language-server/capabilities">Review language server capabilities</Link>
-              </li>
-              <li>
-                <Link to="/docs/reference/configuration">Configure and automate deployments</Link>
-              </li>
-            </ul>
+          <div className={styles.infoPreviewStandalone}>
+            <img
+              src="/img/preview.gif"
+              alt="Animated preview of the INTERLIS IDE documentation navigation"
+            />
           </div>
         </div>
       </div>
