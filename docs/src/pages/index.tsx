@@ -18,10 +18,10 @@ function HomepageHeader() {
             <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
             <div className={styles.heroActions}>
               <Link className="button button--secondary button--lg" to="/docs/getting-started/installation">
-                Start modeling
+                Download
               </Link>
               <Link className="button button--outline button--lg" to="/docs/language-server/overview">
-                Explore the LSP
+                Start modeling
               </Link>
             </div>
           </div>
