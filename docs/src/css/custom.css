@@ -66,3 +66,20 @@
   border-color: #ffffff;
   background-color: rgba(255, 255, 255, 0.1);
 }
+
+.heroTitle_qg2I {
+    font-size: 5rem !important;
+    margin-bottom: 1rem;
+}
+
+.previewSection_z6zU {
+    padding-bottom: 0px !important;
+}
+
+a.button.button--outline.button--lg:hover {
+  color: var(--ifm-color-gray-900) !important;
+}
+
+.button {
+  border-radius: 5px !important;
+}

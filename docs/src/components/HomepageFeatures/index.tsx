@@ -59,7 +59,7 @@ function Feature({title, description, cta}: FeatureItem) {
       <div className={styles.featureCard}>
         <Heading as="h3">{title}</Heading>
         <p>{description}</p>
-        <Link className="button button--sm button--primary" to={cta.to}>
+        <Link className="button button--m button--primary" to={cta.to}>
           {cta.label}
         </Link>
       </div>

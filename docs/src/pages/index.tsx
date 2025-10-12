@@ -35,7 +35,7 @@ function PreviewShowcase(): ReactNode {
     <section className={styles.previewSection}>
       <div className="container">
         <img
-          className={styles.previewImage}
+          // className={styles.previewImage}
           src="/img/preview.gif"
           alt="Animated preview of the INTERLIS IDE documentation navigation"
         />
