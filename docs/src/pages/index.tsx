@@ -17,7 +17,7 @@ function HomepageHeader() {
           </h1>
           <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
           <div className={styles.heroActions}>
-            <Link className="button button--secondary button--lg" to="/docs/getting-started/installation">
+            <Link className="button button--primary button--lg" to="/docs/getting-started/installation">
               Download
             </Link>
             <Link className="button button--outline button--lg" to="/docs/language-server/overview">

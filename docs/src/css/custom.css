@@ -77,7 +77,7 @@
 }
 
 a.button.button--outline.button--lg:hover {
-  color: var(--ifm-color-gray-900) !important;
+  color: var(--ifm-navbar-link-hover-color) !important;
 }
 
 .button {
