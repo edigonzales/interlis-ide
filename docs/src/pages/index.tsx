@@ -40,14 +40,14 @@ function InformationStripes(): ReactNode {
       <div className="container">
         <div className={styles.infoGrid}>
           <div>
-            <h2>Purpose-built for the INTERLIS geolanguage</h2>
+            <h2>Purpose-built for the INTERLIS language</h2>
             <p>
               INTERLIS IDE streamlines schema modeling, validation, and documentation tasks across desktop platforms. The
               Java-based language server powers smart authoring tools while the IDE keeps teams productive with familiar editor
               ergonomics.
             </p>
           </div>
-          <div className={styles.infoPreviewStandalone}>
+          <div>
             <img
               src="/img/preview.gif"
               alt="Animated preview of the INTERLIS IDE documentation navigation"

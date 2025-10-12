@@ -1,0 +1,2 @@
+- "ou can update Eclipse Theia IDE directly in this application by navigating to File > Preferences > Check for Updates… Moreover the application will check for updates after each launch automatically.
+Alternatively you can download the most recent version from the download page." ???? Wo ist das versteckt?

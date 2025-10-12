@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'INTERLIS IDE',
-  tagline: 'A dedicated workspace for modeling geodata with INTERLIS.',
+  tagline: 'A dedicated workspace for modeling data with INTERLIS.',
   favicon: 'img/ililogo1024.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -78,8 +78,8 @@ const config: Config = {
         {to: '/docs/guides/editor-experience', label: 'IDE Guides', position: 'left'},
         {to: '/docs/language-server/overview', label: 'Language Server', position: 'left'},
         {
-          href: 'https://github.com/edigonzales/interlis-lsp',
-          label: 'INTERLIS LSP',
+          href: 'https://www.ech.ch/de/ech/ech-0031/2.1.0',
+          label: 'INTERLIS Specification',
           position: 'right',
         },
         {
@@ -115,10 +115,9 @@ const config: Config = {
             {
               label: 'VS Code Extension',
               href: 'https://marketplace.visualstudio.com/items?itemName=edigonzales.interlis',
-            },
-            {
-              label: 'INTERLIS Specification',
-              href: 'https://interlis.ch',
+            },            {
+              label: 'INTERLIS MCP',
+              href: 'https://marketplace.visualstudio.com/items?itemName=edigonzales.interlis',
             },
           ],
         },
