@@ -36,7 +36,7 @@ export class TheiaIDEContribution implements CommandContribution, MenuContributi
     @inject(WindowService)
     protected readonly windowService: WindowService;
 
-    static REPORT_ISSUE_URL = 'https://github.com/edigonzales/theia-ide/issues/new?assignees=&labels=&template=bug_report.md';
+    static REPORT_ISSUE_URL = 'https://github.com/edigonzales/interlis-lsp/issues/new?assignees=&labels=&template=';
     static DOCUMENTATION_URL = 'https://interlis-ide.ch/docs/user_getting_started/';
 
     registerCommands(commandRegistry: CommandRegistry): void {

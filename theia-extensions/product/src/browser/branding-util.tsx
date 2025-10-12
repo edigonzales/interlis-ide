@@ -33,15 +33,17 @@ export function renderWhatIs(windowService: WindowService): React.ReactNode {
             What is this?
         </h3>
         <div>
-            The Eclipse Theia IDE is a modern and open IDE for cloud and desktop. The Theia IDE is based on the <BrowserLink text="Theia platform"
+            The INTERLIS IDE streamlines schema modeling, validation, and documentation tasks across desktop platforms. The Java-based language server powers smart authoring tools while the IDE keeps teams productive with familiar editor ergonomics.
+
+            The INTERLIS IDE is based on the <BrowserLink text="Theia platform"
             url="https://theia-ide.org" windowService={windowService} ></BrowserLink>.
         </div>
-        <div>
+        {/* <div>
             The IDE is available as a <BrowserLink text="downloadable desktop application" url="https://theia-ide.org//#theiaidedownload"
             windowService={windowService} ></BrowserLink>. You can also <BrowserLink text="try the latest version of the Theia IDE online"
             url="https://try.theia-cloud.io/" windowService={windowService} ></BrowserLink>. The online test version is limited to 30 minutes per session and hosted
             via <BrowserLink text="Theia Cloud" url="https://theia-cloud.io/" windowService={windowService} ></BrowserLink>.
-        </div>
+        </div> */}
     </div>;
 }
 
@@ -103,8 +105,8 @@ export function renderSourceCode(windowService: WindowService): React.ReactNode 
             Source Code
         </h3>
         <div >
-            The source code of Eclipse Theia IDE is available
-            on <BrowserLink text="Github" url="https://github.com/eclipse-theia/theia-ide"
+            The source code of INTERLIS IDE is available
+            on <BrowserLink text="Github" url="https://github.com/edigonzales/theia-ide"
                 windowService={windowService} ></BrowserLink>.
         </div>
     </div>;
@@ -116,8 +118,8 @@ export function renderDocumentation(windowService: WindowService): React.ReactNo
             Documentation
         </h3>
         <div >
-            Please see the <BrowserLink text="documentation" url="https://theia-ide.org/docs/user_getting_started/"
-            windowService={windowService} ></BrowserLink> on how to use the Theia IDE.
+            Please see the <BrowserLink text="documentation" url="https://interlis-ide.ch/docs/intro"
+            windowService={windowService} ></BrowserLink> on how to use the INTERLIS IDE.
         </div>
     </div>;
 }
