@@ -1,93 +1,67 @@
 .heroBanner {
   padding: 6rem 0 4rem;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(135deg, var(--ifm-color-primary), #0783dd);
-}
-
-.heroContent {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
 }
 
 .heroCopy {
-  max-width: 560px;
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
 }
-
 
 .heroTitle {
   font-size: 3.25rem;
   margin-bottom: 1rem;
 }
 
+.heroTitleAccent {
+  color: var(--ifm-color-primary);
+}
+
 .heroSubtitle {
   font-size: 1.25rem;
   line-height: 1.6;
   margin-bottom: 2.25rem;
-  color: rgba(245, 251, 255, 0.85);
 }
 
 .heroActions {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  justify-content: center;
 }
 
-.heroVisual {
-  flex: 1;
-  text-align: right;
+.previewSection {
+  padding: 0 0 3rem;
 }
 
-.heroVisual img {
-  max-width: 280px;
-  width: 100%;
-  filter: drop-shadow(0 22px 45px rgba(3, 75, 121, 0.35));
-}
-
-.infoStripes {
-  background: var(--ifm-background-surface-color);
-  padding: 4rem 0 0;
-}
-
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 3rem;
-}
-
-.infoPreviewStandalone {
+.previewImage {
   display: block;
-}
-
-.infoPreviewStandalone img {
-  display: block;
+  max-width: 900px;
   width: 100%;
-  max-width: none;
+  margin: 0 auto;
   border-radius: 16px;
   box-shadow: 0 18px 40px rgba(3, 35, 76, 0.22);
 }
 
+.languageSection {
+  background: var(--ifm-background-surface-color);
+  padding: 3.5rem 0 0;
+  text-align: center;
+}
+
+.languageSection h2 {
+  margin-bottom: 1.5rem;
+}
+
+.languageSection p {
+  max-width: 720px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
 @media screen and (max-width: 996px) {
-  .heroContent {
-    flex-direction: column;
-    text-align: center;
-  }
-
-  .heroVisual {
-    text-align: center;
-  }
-
-  .heroVisual img {
-    max-width: 220px;
-  }
-
-  .infoGrid {
-    grid-template-columns: 1fr;
-  }
-
-  .infoPreviewStandalone {
-    display: block;
+  .heroTitle {
+    font-size: 2.75rem;
   }
 }
