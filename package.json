@@ -62,9 +62,7 @@
   },
   "theiaPluginsDir": "plugins",
   "theiaPlugins": {
-    "eclipse-theia.builtin-extension-pack": "https://open-vsx.org/api/eclipse-theia/builtin-extension-pack/1.95.3/file/eclipse-theia.builtin-extension-pack-1.95.3.vsix",
-    "vscjava.vscode-java-pack": "https://open-vsx.org/api/vscjava/vscode-java-pack/0.29.0/file/vscjava.vscode-java-pack-0.29.0.vsix",
-    "vscjava.vscode-java-dependency": "https://open-vsx.org/api/vscjava/vscode-java-dependency/0.24.1/file/vscjava.vscode-java-dependency-0.24.1.vsix"
+    "edigonzales.interlis-lsp": "https://open-vsx.org/api/edigonzales/interlis-editor/0.0.13/file/edigonzales.interlis-editor-0.0.13.vsix"
   },
   "theiaPluginsExcludeIds": [
     "ms-vscode.js-debug-companion",
