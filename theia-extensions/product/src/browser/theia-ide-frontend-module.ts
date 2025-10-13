@@ -9,7 +9,7 @@
 
 import '../../src/browser/style/index.css';
 
-import { WidgetFactory } from '@theia/core/lib/browser';
+import { WidgetFactory, FrontendApplicationContribution } from '@theia/core/lib/browser';
 import { AboutDialog } from '@theia/core/lib/browser/about-dialog';
 import { CommandContribution } from '@theia/core/lib/common/command';
 import { ContainerModule } from '@theia/core/shared/inversify';
@@ -18,6 +18,7 @@ import { MenuContribution } from '@theia/core/lib/common/menu';
 import { TheiaIDEAboutDialog } from './theia-ide-about-dialog';
 import { TheiaIDEContribution } from './theia-ide-contribution';
 import { TheiaIDEGettingStartedWidget } from './theia-ide-getting-started-widget';
+import { HideWelcomeMenuContribution } from './hide-welcome-menu-contribution';
 
 export default new ContainerModule((bind, _unbind, isBound, rebind) => {
     bind(TheiaIDEGettingStartedWidget).toSelf();
@@ -35,4 +36,6 @@ export default new ContainerModule((bind, _unbind, isBound, rebind) => {
     [CommandContribution, MenuContribution].forEach(serviceIdentifier =>
         bind(serviceIdentifier).toService(TheiaIDEContribution)
     );
+    bind(HideWelcomeMenuContribution).toSelf().inSingletonScope();
+    bind(FrontendApplicationContribution).toService(HideWelcomeMenuContribution);
 });
