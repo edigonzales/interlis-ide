@@ -18,6 +18,7 @@ import { MenuContribution } from '@theia/core/lib/common/menu';
 import { TheiaIDEAboutDialog } from './theia-ide-about-dialog';
 import { TheiaIDEContribution } from './theia-ide-contribution';
 import { TheiaIDEGettingStartedWidget } from './theia-ide-getting-started-widget';
+import { TheiaIDEGettingStartedMenuOverrides } from './theia-ide-getting-started-menu-overrides';
 
 export default new ContainerModule((bind, _unbind, isBound, rebind) => {
     bind(TheiaIDEGettingStartedWidget).toSelf();
@@ -35,4 +36,6 @@ export default new ContainerModule((bind, _unbind, isBound, rebind) => {
     [CommandContribution, MenuContribution].forEach(serviceIdentifier =>
         bind(serviceIdentifier).toService(TheiaIDEContribution)
     );
+    bind(TheiaIDEGettingStartedMenuOverrides).toSelf().inSingletonScope();
+    bind(MenuContribution).toService(TheiaIDEGettingStartedMenuOverrides);
 });
