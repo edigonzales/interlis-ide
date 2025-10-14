@@ -19,8 +19,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        #os: [windows-2022, ubuntu-22.04, macos-13, macos-14] # macOS-13 is for x64, macOS-14 is for arm64
-        os: [macos-14]
+        #os: [windows-2022, ubuntu-24.04, ubuntu-24.04-arm, macos-13, macos-14] # macOS-13 is for x64, macOS-14 is for arm64
+        os: [ubuntu-24.04, macos-14]
         node: ["22.x"]
 
     runs-on: ${{ matrix.os }}
@@ -53,7 +53,7 @@ jobs:
         run: yarn build:extensions
   
       - name: Build prod package (macOS)
-        if: runner.os == 'macOS'
+        #if: runner.os == 'macOS'
         shell: bash
         run: |
           yarn electron build 
@@ -123,14 +123,15 @@ jobs:
       #       applications/electron/dist/**
       #     retention-days: 1
 
-      # - name: Upload Linux Dist Files
-      #   if: runner.os == 'Linux' && github.event_name != 'pull_request'
-      #   uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 #4.6.1
-      #   with:
-      #     name: linux
-      #     path: |
-      #       applications/electron/dist/**
-      #     retention-days: 1
+      - name: Upload Linux Dist Files
+        if: runner.os == 'Linux'
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 #4.6.1
+        with:
+          name: linux
+          name: ${{ matrix.os == 'ubuntu-24.04' && 'linux-x64' || matrix.os == 'ubuntu-24.04-arm' && 'linux-arm64'}}
+          path: |
+            applications/electron/dist/**
+          retention-days: 1
 
       # - name: Test (Linux)
       #   if: matrix.tests != 'skip' && runner.os == 'Linux'
