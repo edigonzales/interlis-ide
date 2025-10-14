@@ -1,0 +1,13 @@
+/*
+ * Temporarily disable pointer hit-testing on webview-based editors while a split handle is being dragged.
+ * This prevents embedded iframes from swallowing the pointerup event, which causes the sash to remain stuck.
+ */
+.theia-webview-dragging-split .theia-webview,
+.theia-webview-dragging-split webview,
+.theia-webview-dragging-split iframe.theia-webview,
+.theia-webview-dragging-split .custom-editor-webview,
+.theia-webview-dragging-split .markdown-preview-frame,
+.theia-webview-dragging-split .webview-host,
+.theia-webview-dragging-split .monaco-editor iframe {
+    pointer-events: none !important;
+}
