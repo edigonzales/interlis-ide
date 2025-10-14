@@ -1,0 +1,11 @@
+/* Disable hit-testing on embedded webviews/iframes while a split handle drag is active. */
+.dragging-split .theia-webview,
+.dragging-split webview,
+.dragging-split iframe.theia-webview,
+.dragging-split .custom-editor-webview,
+.dragging-split .markdown-preview-frame,
+.dragging-split .webview-host,
+.dragging-split .monaco-editor iframe,
+.dragging-split .p-Widget iframe {
+    pointer-events: none !important;
+}
