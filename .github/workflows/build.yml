@@ -19,9 +19,9 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        #os: [windows-2022, ubuntu-24.04, ubuntu-24.04-arm, macos-13, macos-14] # macOS-13 is for x64, macOS-14 is for arm64
-        #os: [ubuntu-24.04, macos-14]
-        os: [ubuntu-22.04]
+        #os: [windows-2022, ubuntu-22.04, ubuntu-22.04-arm, macos-13, macos-14] # macOS-13 is for x64, macOS-14 is for arm64
+        #os: [ubuntu-22.04, macos-14]
+        os: [windows-2022, ubuntu-22.04]
         node: ["22.x"]
 
     runs-on: ${{ matrix.os }}
@@ -109,20 +109,20 @@ jobs:
             !applications/electron/dist/mac-arm64/**
           retention-days: 1
 
-      # - name: Upload Windows Dist Files
-      #   if: runner.os == 'Windows' && github.event_name != 'pull_request'
-      #   uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 #4.6.1
-      #   with:
-      #     name: windows
-      #     path: |
-      #       applications/electron/dist/**
-      #     retention-days: 1
+      - name: Upload Windows Dist Files
+        if: runner.os == 'Windows' 
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 #4.6.1
+        with:
+          name: windows
+          path: |
+            applications/electron/dist/**
+          retention-days: 1
 
       - name: Upload Linux Dist Files
         if: runner.os == 'Linux'
         uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 #4.6.1
         with:
-          name: ${{ matrix.os == 'ubuntu-24.04' && 'linux-x64' || matrix.os == 'ubuntu-24.04-arm' && 'linux-arm64'}}
+          name: ${{ matrix.os == 'ubuntu-22.04' && 'linux-x64' || matrix.os == 'ubuntu-22.04-arm' && 'linux-arm64'}}
           path: |
             applications/electron/dist/**
           retention-days: 1
