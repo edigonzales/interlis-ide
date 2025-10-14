@@ -43,6 +43,14 @@ jobs:
       #   with:
       #     python-version: '3.13'
 
+      - name: Build dev package (macOS)
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          yarn build:extensions
+          yarn electron build && yarn download:plugins
+
+
       # - name: Build dev package (Windows, Linux)
       #   if: (runner.os == 'Windows' || runner.os == 'Linux') && github.event_name == 'pull_request'
       #   shell: bash
