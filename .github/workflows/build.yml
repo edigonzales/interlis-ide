@@ -242,3 +242,37 @@ jobs:
           fs.writeFileSync('latest-mac.yml', yaml.stringify(out));
           console.log('Wrote merged latest-mac.yml with', out.files?.length || 0, 'entries');
           EOF
+
+      - name: Publish Release with assets
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: |
+            # Windows
+            release_assets/windows/*.exe
+            release_assets/windows/*.exe.blockmap
+            release_assets/windows/latest*.yml
+
+            # macOS zips (+ blockmaps) from both folders
+            release_assets/mac-*/InterlisIDE*-mac.zip
+            release_assets/mac-*/InterlisIDE*-mac.zip.blockmap
+
+            # merged feed (single file)
+            release_assets/latest-mac.yml
+
+            # macOS DMGs (renamed by your earlier step)
+            release_assets/mac-*/InterlisIDE*-arm64.dmg
+            release_assets/mac-*/InterlisIDE*-x64.dmg
+            release_assets/mac-*/InterlisIDE*-arm64.dmg.blockmap
+            release_assets/mac-*/InterlisIDE*-x64.dmg.blockmap
+
+            # Linux
+            release_assets/linux-*/InterlisIDE*-arm64.AppImage
+            release_assets/linux-*/InterlisIDE*-x64.AppImage
+            release_assets/linux-*/InterlisIDE*-arm64.deb
+            release_assets/linux-*/InterlisIDE*-x64.deb
+            release_assets/linux-*/latest-linux*.yml
+          generate_release_notes: true
+          draft: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
