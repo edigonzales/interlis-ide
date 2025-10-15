@@ -99,7 +99,7 @@ export class TheiaIDEAboutDialog extends AboutDialog {
     protected renderVersion(): React.ReactNode {
         const applicationVersion = this.applicationInfo?.version;
         const configuredVersionLabel = this.aboutConfig.productVersionLabel;
-        const displayVersionLabel = configuredVersionLabel ?? (applicationVersion ? `Version ${applicationVersion}` : undefined);
+        const displayVersionLabel = this.resolveVersionLabel(configuredVersionLabel, applicationVersion);
         const shouldAppendApplicationVersion = Boolean(applicationVersion && displayVersionLabel && !displayVersionLabel.includes(applicationVersion));
         const versionLine = displayVersionLabel ?? 'Version information unavailable';
         const copyrightLine = this.aboutConfig.copyright ?? 'Copyright (c) 2025 Amt für Geoinformation, Kanton Solothurn';
@@ -114,6 +114,19 @@ export class TheiaIDEAboutDialog extends AboutDialog {
                 {'VS Code API Version: ' + this.vscodeApiVersion}
             </p>
         </div>;
+    }
+
+    protected resolveVersionLabel(configuredLabel: string | undefined, applicationVersion: string | undefined): string | undefined {
+        if (configuredLabel?.includes('{version}') && applicationVersion) {
+            return configuredLabel.replace(/\{version\}/g, applicationVersion);
+        }
+        if (configuredLabel && configuredLabel.trim().length > 0) {
+            return configuredLabel;
+        }
+        if (applicationVersion) {
+            return `Version ${applicationVersion}`;
+        }
+        return undefined;
     }
 
     protected resolveAboutConfig(): ProductAboutConfiguration {

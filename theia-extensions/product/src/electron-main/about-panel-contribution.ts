@@ -55,10 +55,14 @@ export class AboutPanelContribution implements ElectronMainApplicationContributi
 
     protected resolveProductVersionLabel(configuration: ProductAboutConfiguration | undefined): string {
         const configuredVersionLabel = configuration?.productVersionLabel;
+        const applicationVersion = app.getVersion();
+        if (configuredVersionLabel?.includes('{version}') && applicationVersion) {
+            return configuredVersionLabel.replace(/\{version\}/g, applicationVersion);
+        }
         if (configuredVersionLabel && configuredVersionLabel.trim().length > 0) {
             return configuredVersionLabel;
         }
-        return `Version ${app.getVersion()}`;
+        return `Version ${applicationVersion}`;
     }
 
 }

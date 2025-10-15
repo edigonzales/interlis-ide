@@ -25,6 +25,16 @@ This guide differentiates between two version numbers:
   - For a new Theia *minor* release (e.g., 1.48.0), use the same version as Theia.
   - For a new Theia *patch* release (e.g., 1.48.1), use Theia's patch version multiplied by 100 (e.g., 1.48.100).
 
+Throughout this document `THEIA_IDE_VERSION` (and similar placeholders) are not predefined
+environment variables. Replace them manually with the concrete version number you are
+releasing. If you prefer shell variables you can export one yourself, for example
+
+```sh
+export THEIA_IDE_VERSION=1.48.100
+```
+
+and then reuse `"${THEIA_IDE_VERSION}"` in the commands below.
+
 ## 2. Update Package Versions and Theia
 
 Follow these steps to update dependencies and package versions:
