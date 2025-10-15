@@ -107,6 +107,10 @@ const config: Config = {
           title: 'Ecosystem',
           items: [
             {
+              label: 'INTERLIS IDE',
+              href: 'https://github.com/edigonzales/theia-ide',
+            },            
+            {
               label: 'INTERLIS Language Server',
               href: 'https://github.com/edigonzales/interlis-lsp',
             },
