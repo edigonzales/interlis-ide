@@ -194,3 +194,46 @@ jobs:
           ls -la release_assets/mac-x64
           ls -la release_assets/linux-arm64
           ls -la release_assets/linux-x64
+
+      - name: Merge mac latest-mac.yml (x64 + arm64) into one
+        if: |
+          hashFiles('release_assets/mac-x64/latest-mac.yml') != '' &&
+          hashFiles('release_assets/mac-arm64/latest-mac.yml') != ''
+        shell: bash
+        working-directory: release_assets
+        run: |
+          set -euo pipefail
+          node - <<'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          const yaml = require('yaml');
+
+          function readYml(p) {
+            return yaml.parse(fs.readFileSync(p, 'utf8'));
+          }
+          const x64 = readYml(path.join('mac-x64', 'latest-mac.yml'));
+          const arm = readYml(path.join('mac-arm64', 'latest-mac.yml'));
+
+          // Merge: keep the higher version/releaseDate, union files
+          const out = { ...x64 };
+          out.files = [...(x64.files || []), ...(arm.files || [])];
+
+          // If electron-builder used single-file fields, normalize to files[]
+          for (const key of ['path','url','sha512','blockMapSize','sha512checksum']) {
+            if (x64[key] && !out.files?.length) {
+              out.files = [{ url: x64.path || x64.url, sha512: x64.sha512, size: x64.filesize || x64.size }];
+            }
+          }
+
+          // Keep the newer releaseDate/version if they differ
+          try {
+            const d1 = new Date(x64.releaseDate || 0), d2 = new Date(arm.releaseDate || 0);
+            if (d2 > d1) {
+              out.version = arm.version || out.version;
+              out.releaseDate = arm.releaseDate || out.releaseDate;
+            }
+          } catch {}
+
+          fs.writeFileSync('latest-mac.yml', yaml.stringify(out));
+          console.log('Wrote merged latest-mac.yml with', out.files?.length || 0, 'entries');
+          EOF

@@ -75,8 +75,6 @@ const config: Config = {
           position: 'left',
           label: 'Documentation',
         },
-        {to: '/docs/guides/editor-experience', label: 'IDE Guides', position: 'left'},
-        {to: '/docs/language-server/overview', label: 'Language Server', position: 'left'},
         {
           href: 'https://www.ech.ch/de/ech/ech-0031/2.1.0',
           label: 'INTERLIS Specification',
