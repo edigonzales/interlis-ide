@@ -17,10 +17,10 @@ function HomepageHeader() {
           </h1>
           <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
           <div className={styles.heroActions}>
-            <Link className="button button--primary button--lg" to="/docs/getting-started/installation">
+            <Link className="button button--primary button--lg" to="https://github.com/edigonzales/theia-ide/">
               Download
             </Link>
-            <Link className="button button--outline button--lg" to="/docs/language-server/overview">
+            <Link className="button button--outline button--lg" to="/docs/intro">
               Start modeling
             </Link>
           </div>

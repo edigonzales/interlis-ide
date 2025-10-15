@@ -94,11 +94,11 @@ const config: Config = {
           title: 'Learn',
           items: [
             {
-              label: 'Getting Started',
+              label: 'Installation',
               to: '/docs/getting-started/installation',
             },
             {
-              label: 'Language Server',
+              label: 'Editor',
               to: '/docs/language-server/overview',
             },
           ],

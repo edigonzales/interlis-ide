@@ -273,6 +273,8 @@ jobs:
             release_assets/linux-*/InterlisIDE*-x64.deb
             release_assets/linux-*/latest-linux*.yml
           generate_release_notes: true
-          draft: true
+          draft: false
+          prerelease: true
+          make_latest: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
