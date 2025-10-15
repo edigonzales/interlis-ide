@@ -117,7 +117,7 @@ const config: Config = {
               href: 'https://marketplace.visualstudio.com/items?itemName=edigonzales.interlis',
             },            {
               label: 'INTERLIS MCP',
-              href: 'https://marketplace.visualstudio.com/items?itemName=edigonzales.interlis',
+              href: 'https://github.com/edigonzales/interlis-mcp',
             },
           ],
         },
@@ -127,10 +127,6 @@ const config: Config = {
             {
               label: 'Report an issue',
               href: 'https://github.com/eclipse-theia/theia-ide/issues',
-            },
-            {
-              label: 'Contributing guide',
-              to: '/docs/community/roadmap',
             },
           ],
         },

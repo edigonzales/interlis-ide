@@ -131,4 +131,66 @@ jobs:
         shell: bash
         run: |
           ls -la release_assets
-          tree .
+
+      - name: Qualify installer filenames with arch
+        shell: bash
+        working-directory: release_assets
+        run: |
+          set -euo pipefail
+
+          qualify_dir() {
+            local dir="$1" arch="$2"
+            [ -d "$dir" ] || return 0
+
+            shopt -s nullglob
+
+            # DMG (+ blockmap) — macOS
+            for f in "$dir"/*.dmg "$dir"/*.dmg.blockmap; do
+              [ -e "$f" ] || continue
+              # Skip if already qualified
+              [[ "$f" == *"-${arch}.dmg"* ]] && continue
+              if [[ "$f" == *.blockmap ]]; then
+                base="${f%.blockmap}"                     # drop .blockmap
+                stem="${base%.*}" ext="${base##*.}"      # split at last dot
+                mv -v -- "$f" "${stem}-${arch}.${ext}.blockmap"
+              else
+                stem="${f%.*}" ext="${f##*.}"
+                mv -v -- "$f" "${stem}-${arch}.${ext}"
+              fi
+            done
+
+            # AppImage — Linux
+            for f in "$dir"/*.AppImage; do
+              [ -e "$f" ] || continue
+              [[ "$f" == *"-${arch}.AppImage" ]] && continue
+              stem="${f%.*}" ext="${f##*.}"
+              mv -v -- "$f" "${stem}-${arch}.${ext}"
+            done
+
+            # .deb — Linux
+            for f in "$dir"/*.deb; do
+              [ -e "$f" ] || continue
+              [[ "$f" == *"-${arch}.deb" ]] && continue
+              stem="${f%.*}" ext="${f##*.}"
+              mv -v -- "$f" "${stem}-${arch}.${ext}"
+            done
+
+            # NOTE:
+            # - Do NOT rename latest*.yml (auto-updater expects exact names)
+            # - mac ZIPs + their blockmaps are already qualified by electron-builder; leave them
+            # - Windows left as-is (your call)
+          }
+
+          qualify_dir mac-arm64 arm64
+          qualify_dir mac-x64   x64
+          qualify_dir linux-arm64 arm64
+          qualify_dir linux-x64   x64
+          # Windows: no qualification needed
+
+      - name: Debug 
+        shell: bash
+        run: |
+          ls -la release_assets/mac-arm64
+          ls -la release_assets/mac-x64
+          ls -la release_assets/linux-arm64
+          ls -la release_assets/linux-x64
