@@ -16,8 +16,8 @@ const FeatureList: FeatureItem[] = [
     title: 'Model-centric workflows',
     description: (
       <>
-        Bring your INTERLIS models, reference datasets, and validation rules into a single workspace. Launch compile and export
-        commands from the command palette or reuse them in CI pipelines.
+        Bring your INTERLIS models into a single workspace. Launch compile and export
+        commands from the command palette.
       </>
     ),
     cta: {
@@ -42,7 +42,7 @@ const FeatureList: FeatureItem[] = [
     title: 'Open ecosystem',
     description: (
       <>
-        Extend the IDE with validation automations, export pipelines, or custom HTML renderers. Collaborate through GitHub and
+        Extend the IDE, the extension or the INTERLIC MCP with missing features of fix an issue. Collaborate through GitHub and
         share improvements with the community.
       </>
     ),

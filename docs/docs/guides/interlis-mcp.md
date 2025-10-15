@@ -1,5 +1,5 @@
 ---
-title: Validation pipelines
+title: INTERLIS MCP
 description: Combine IDE checks with external validators to ensure consistent INTERLIS datasets.
 ---
 

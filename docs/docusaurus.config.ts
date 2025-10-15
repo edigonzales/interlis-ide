@@ -99,7 +99,7 @@ const config: Config = {
             },
             {
               label: 'Editor',
-              to: '/docs/language-server/overview',
+              to: '/docs/guides/editor-experience',
             },
           ],
         },
@@ -113,7 +113,8 @@ const config: Config = {
             {
               label: 'VS Code Extension',
               href: 'https://marketplace.visualstudio.com/items?itemName=edigonzales.interlis',
-            },            {
+            },            
+            {
               label: 'INTERLIS MCP',
               href: 'https://github.com/edigonzales/interlis-mcp',
             },

@@ -48,7 +48,7 @@ function InformationStripes(): ReactNode {
   return (
     <section className={styles.languageSection}>
       <div className="container">
-        <h2>Purpose-built for the INTERLIS language</h2>
+        <h2>Purpose-built for the INTERLIS data language</h2>
         <p>
           INTERLIS IDE streamlines schema modeling, validation, and documentation tasks across desktop platforms. The
           Java-based language server powers smart authoring tools while the IDE keeps teams productive with familiar editor

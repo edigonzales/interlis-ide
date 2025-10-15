@@ -16,8 +16,18 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'getting-started/installation',
-        'getting-started/project-setup',
         'getting-started/quick-tour',
+        'getting-started/configuration',
+        'getting-started/vscode',
+      ],
+    },
+    {
+      type: 'category',
+      label: 'IDE Guides',
+      items: [
+        'guides/editor-experience',
+        'guides/interlis-mcp',
+        'guides/extensibility',
       ],
     },
     {
@@ -28,15 +38,6 @@ const sidebars: SidebarsConfig = {
         'language-server/capabilities',
         'language-server/commands',
         'language-server/runtime-delivery',
-      ],
-    },
-    {
-      type: 'category',
-      label: 'IDE Guides',
-      items: [
-        'guides/editor-experience',
-        'guides/validation-workflows',
-        'guides/extensibility',
       ],
     },
     {
