@@ -60,7 +60,7 @@ jobs:
         shell: bash
         run: |
           yarn --skip-integrity-check --network-timeout 100000
-          yarn electron build 
+          yarn build 
           yarn download:plugins
           yarn electron package:prod
         env:
@@ -75,7 +75,7 @@ jobs:
           sudo apt-get install -y ruby ruby-dev build-essential rpm
           sudo gem install --no-document fpm
           yarn --skip-integrity-check --network-timeout 100000
-          yarn electron build 
+          yarn build 
           yarn download:plugins
           yarn electron package:prod
         env:
