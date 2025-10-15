@@ -17,7 +17,7 @@ function HomepageHeader() {
           </h1>
           <p className={styles.heroSubtitle}>{siteConfig.tagline}</p>
           <div className={styles.heroActions}>
-            <Link className="button button--primary button--lg" to="https://github.com/edigonzales/theia-ide/">
+            <Link className="button button--primary button--lg" to="https://github.com/edigonzales/theia-ide/releases">
               Download
             </Link>
             <Link className="button button--outline button--lg" to="/docs/intro">
