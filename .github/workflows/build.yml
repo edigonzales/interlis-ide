@@ -131,3 +131,4 @@ jobs:
         shell: bash
         run: |
           ls -la release_assets
+          tree .
