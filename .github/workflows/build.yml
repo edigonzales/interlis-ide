@@ -19,9 +19,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [windows-2022, ubuntu-22.04, ubuntu-22.04-arm, macos-13, macos-14] # macOS-13 is for x64, macOS-14 is for arm64
+        #os: [windows-2022, ubuntu-22.04, ubuntu-22.04-arm, macos-13, macos-14] # macOS-13 is for x64, macOS-14 is for arm64
         #os: [ubuntu-22.04, macos-14]
-        #os: [windows-2022, ubuntu-22.04, macos-14]
+        #os: [windows-2022, ubuntu-22.04, macos-13, macos-14]
+        os: [ubuntu-22.04-arm]
         node: ["22.x"]
 
     runs-on: ${{ matrix.os }}
@@ -46,7 +47,7 @@ jobs:
           python-version: '3.13'
   
       - name: Build prod package 
-        #if: runner.os == 'macOS'
+        if: !(runner.os == 'Linux' && runner.arch == 'ARM64')
         shell: bash
         run: |
           yarn --skip-integrity-check --network-timeout 100000
@@ -57,6 +58,22 @@ jobs:
           NODE_OPTIONS: --max-old-space-size=4096
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build prod package (Linux ARM)
+        if: runner.os == 'Linux' && runner.arch == 'ARM64'
+        shell: bash
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby ruby-dev build-essential rpm
+          sudo gem install --no-document fpm
+          yarn --skip-integrity-check --network-timeout 100000
+          yarn electron build 
+          yarn download:plugins
+          yarn electron package:prod
+        env:
+          NODE_OPTIONS: --max-old-space-size=4096
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          USE_SYSTEM_FPM: "true"
+
       - name: Upload Mac Dist Files
         if: runner.os == 'macOS'
         uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 #4.6.1
@@ -66,7 +83,7 @@ jobs:
             applications/electron/dist/**
             !applications/electron/dist/mac/**
             !applications/electron/dist/mac-arm64/**
-          retention-days: 1
+          #retention-days: 1
 
       - name: Upload Windows Dist Files
         if: runner.os == 'Windows' 
@@ -75,7 +92,7 @@ jobs:
           name: windows
           path: |
             applications/electron/dist/**
-          retention-days: 1
+          #retention-days: 1
 
       - name: Upload Linux Dist Files
         if: runner.os == 'Linux'
@@ -84,4 +101,4 @@ jobs:
           name: ${{ matrix.os == 'ubuntu-22.04' && 'linux-x64' || matrix.os == 'ubuntu-22.04-arm' && 'linux-arm64'}}
           path: |
             applications/electron/dist/**
-          retention-days: 1
+          #retention-days: 1
