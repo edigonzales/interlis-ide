@@ -6,7 +6,11 @@ on:
       - master
     tags:
       - "v*"
+    paths-ignore:
+      - 'docs/**'
   workflow_dispatch:
+    paths-ignore:
+      - 'docs/**'
   # pull_request:
   #   branches:
   #     - master
@@ -120,7 +124,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           pattern: "*"
-          merge-multiple: true
+          merge-multiple: false
           path: release_assets
 
       - name: Debug 
