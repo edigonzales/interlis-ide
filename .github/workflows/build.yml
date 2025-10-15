@@ -47,7 +47,7 @@ jobs:
           python-version: '3.13'
   
       - name: Build prod package 
-        if: !(runner.os == 'Linux' && runner.arch == 'ARM64')
+        if: runner.os != 'Linux' || runner.arch != 'ARM64'
         shell: bash
         run: |
           yarn --skip-integrity-check --network-timeout 100000
