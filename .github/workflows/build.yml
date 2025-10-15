@@ -195,6 +195,11 @@ jobs:
           ls -la release_assets/linux-arm64
           ls -la release_assets/linux-x64
 
+      - name: Install YAML lib for merge script
+        shell: bash
+        working-directory: release_assets
+        run: npm i yaml --no-save
+
       - name: Merge mac latest-mac.yml (x64 + arm64) into one
         if: |
           hashFiles('release_assets/mac-x64/latest-mac.yml') != '' &&
