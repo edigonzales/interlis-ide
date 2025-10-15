@@ -8,6 +8,11 @@
  ********************************************************************************/
 
 export interface ProductAboutConfiguration {
+    /**
+     * Optional string displayed as the product version in the "About" dialog.
+     * If the string contains the token `{version}` it will be replaced by the
+     * current application version when rendered.
+     */
     readonly productVersionLabel?: string;
     readonly copyright?: string;
     readonly iconPath?: string;
