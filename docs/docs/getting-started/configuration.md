@@ -8,23 +8,16 @@ description: Adjust language server behavior and IDE integration details.
 ```json title="settings.json"
 {
   "interlisLsp.server.jarPath": "${workspaceFolder}/server/interlis-lsp-all.jar",
-  "interlisLsp.server.javaHome": "/usr/lib/jvm/java-21-openjdk",
-  "interlisLsp.diagnostics.maxProblems": 200,
-  "interlisLsp.trace.server": "verbose"
+  "interlisLsp.javaPath": "/usr/lib/jvm/java-21-openjdk/bin/java",
+  "interlisLsp.modelRepositories": "https://models.local,https://models.remote",
+  "interlisLsp.autoShowOutputOnStart": true
 }
 ```
 
-- `interlisLsp.server.jarPath` overrides the server location when developing locally.
-- `interlisLsp.server.javaHome` forces a specific runtime (useful on systems with multiple JDKs).
-- `interlisLsp.diagnostics.maxProblems` mirrors the `.interlisrc` option showcased in the [project setup walkthrough](../getting-started/project-setup.md).
-- `interlisLsp.trace.server` is handy when debugging handshake issues with the Java process.
-
-## Environment variables
-
-| Variable | Purpose |
-| --- | --- |
-| `INTERLIS_LSP_OPTS` | Extra JVM flags passed to the server process.
-| `INTERLIS_IDE_DISABLE_DIAGRAMS` | Skip UML/PlantUML generation when running in headless environments.
+- `interlisLsp.server.jarPath` overrides the bundled language server JAR.
+- `interlisLsp.javaPath` points to a custom Java runtime if the bundled runtime is missing.
+- `interlisLsp.modelRepositories` defines comma-separated repositories resolved by the model discovery service and completion engine.
+- `interlisLsp.autoShowOutputOnStart` shows the INTERLIS output channel when the extension activates.
 
 ## CLI helpers
 
