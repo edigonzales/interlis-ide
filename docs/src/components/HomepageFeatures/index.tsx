@@ -22,7 +22,7 @@ const FeatureList: FeatureItem[] = [
     ),
     cta: {
       label: 'Start modeling',
-      to: '/docs/getting-started/project-setup',
+      to: '/docs/intro',
     },
   },
   {
@@ -48,7 +48,7 @@ const FeatureList: FeatureItem[] = [
     ),
     cta: {
       label: 'Contribute ideas',
-      to: '/docs/community/roadmap',
+      to: 'https://github.com/edigonzales/theia-ide/issues',
     },
   },
 ];

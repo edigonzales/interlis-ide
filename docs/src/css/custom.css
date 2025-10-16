@@ -1,3 +1,4 @@
+@import 'font-awesome/css/font-awesome.min.css';
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Sora:wght@800&display=swap');
 
 :root {
@@ -84,23 +85,29 @@ a.button.button--outline.button--lg:hover {
   border-radius: 5px !important;
 }
 
-.header-github-link {
-  display: inline-flex;
+.navbar__icon {
+  height: 2rem;
+  width: 2rem;
+}
+
+.navbar__github {
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 24px;
-  height: 24px;
+  border-radius: 50%;
+  font-size: 1.4rem;
+  transition: background var(--ifm-transition-fast);
 }
 
-.header-github-link::before {
-  content: '';
-  width: 24px;
-  height: 24px;
-  display: inline-block;
-  background: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23000000' d='M12 .5C5.648.5.5 5.648.5 12c0 5.092 3.292 9.405 7.862 10.936.575.106.786-.249.786-.555 0-.274-.01-1.003-.015-1.969-3.2.695-3.877-1.543-3.877-1.543-.523-1.328-1.278-1.682-1.278-1.682-1.044-.714.079-.699.079-.699 1.154.081 1.762 1.185 1.762 1.185 1.027 1.761 2.695 1.253 3.352.958.103-.744.402-1.253.732-1.541-2.554-.291-5.238-1.277-5.238-5.683 0-1.255.45-2.282 1.185-3.087-.119-.29-.514-1.462.112-3.049 0 0 .967-.31 3.168 1.18.919-.256 1.905-.384 2.886-.389.98.005 1.967.133 2.887.389 2.199-1.49 3.165-1.18 3.165-1.18.628 1.587.233 2.759.114 3.049.738.805 1.184 1.832 1.184 3.087 0 4.417-2.689 5.389-5.253 5.674.41.353.777 1.05.777 2.117 0 1.528-.014 2.76-.014 3.136 0 .309.208.667.792.553C20.213 21.399 23.5 17.088 23.5 12c0-6.352-5.148-11.5-11.5-11.5Z'/%3E%3C/svg%3E")
-    no-repeat center / contain;
+html[data-theme='light'] .navbar__github {
+  color: #000;
 }
 
-[data-theme='dark'] .header-github-link::before {
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23ffffff' d='M12 .5C5.648.5.5 5.648.5 12c0 5.092 3.292 9.405 7.862 10.936.575.106.786-.249.786-.555 0-.274-.01-1.003-.015-1.969-3.2.695-3.877-1.543-3.877-1.543-.523-1.328-1.278-1.682-1.278-1.682-1.044-.714.079-.699.079-.699 1.154.081 1.762 1.185 1.762 1.185 1.027 1.761 2.695 1.253 3.352.958.103-.744.402-1.253.732-1.541-2.554-.291-5.238-1.277-5.238-5.683 0-1.255.45-2.282 1.185-3.087-.119-.29-.514-1.462.112-3.049 0 0 .967-.31 3.168 1.18.919-.256 1.905-.384 2.886-.389.98.005 1.967.133 2.887.389 2.199-1.49 3.165-1.18 3.165-1.18.628 1.587.233 2.759.114 3.049.738.805 1.184 1.832 1.184 3.087 0 4.417-2.689 5.389-5.253 5.674.41.353.777 1.05.777 2.117 0 1.528-.014 2.76-.014 3.136 0 .309.208.667.792.553C20.213 21.399 23.5 17.088 23.5 12c0-6.352-5.148-11.5-11.5-11.5Z'/%3E%3C/svg%3E");
+html[data-theme='dark'] .navbar__github {
+  color: #fff;
+}
+
+.navbar__github:hover {
+  background: var(--ifm-color-emphasis-200);
 }

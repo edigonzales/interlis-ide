@@ -90,9 +90,10 @@ const config: Config = {
         },
         {
           href: 'https://github.com/edigonzales/theia-ide',
+          'aria-label': 'GitHub',
+          className: 'navbar__icon navbar__github',
           position: 'right',
-          className: 'header-github-link',
-          'aria-label': 'GitHub repository',
+          html: '<i class="fa fa-github"></i>',
         },
       ],
     },
@@ -138,7 +139,7 @@ const config: Config = {
           items: [
             {
               label: 'Report an issue',
-              href: 'https://github.com/eclipse-theia/theia-ide/issues',
+              href: 'https://github.com/edigonzales/theia-ide/issues',
             },
           ],
         },
