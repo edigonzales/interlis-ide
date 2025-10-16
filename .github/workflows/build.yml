@@ -274,7 +274,7 @@ jobs:
             release_assets/linux-*/latest-linux*.yml
           generate_release_notes: true
           draft: false
-          prerelease: true
+          prerelease: false
           make_latest: false
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
