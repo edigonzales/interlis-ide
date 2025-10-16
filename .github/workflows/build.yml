@@ -84,7 +84,7 @@ jobs:
           USE_SYSTEM_FPM: "true"
 
       - name: Sanitize macOS artifacts
-        if: runner.os == 'macOS'
+        if: runner.os == 'macOS' 
         shell: bash
         run: |
           set -euo pipefail
