@@ -1,37 +1,7 @@
----
-title: Visual Studio Code
-description: Adjust language server behavior and IDE integration details.
----
+# Visual Studio Code and Theia Support
 
-## Workspace settings
+At the moment you get all the features of the INTERLIS IDE when using Visual Studio Code or VSCodium together with the [INTERLIS editor extension](https://marketplace.visualstudio.com/items?itemName=edigonzales.interlis-editor). Since a Java runtime is bundled with the extension, everything works out of the box.
 
-```json title="settings.json"
-{
-  "interlisLsp.server.jarPath": "${workspaceFolder}/server/interlis-lsp-all.jar",
-  "interlisLsp.server.javaHome": "/usr/lib/jvm/java-21-openjdk",
-  "interlisLsp.diagnostics.maxProblems": 200,
-  "interlisLsp.trace.server": "verbose"
-}
-```
+This can change in the future if we add more features that are not realizable within a simple VS Code extension.
 
-- `interlisLsp.server.jarPath` overrides the server location when developing locally.
-- `interlisLsp.server.javaHome` forces a specific runtime (useful on systems with multiple JDKs).
-- `interlisLsp.diagnostics.maxProblems` mirrors the `.interlisrc` option showcased in the [project setup walkthrough](../getting-started/project-setup.md).
-- `interlisLsp.trace.server` is handy when debugging handshake issues with the Java process.
-
-## Environment variables
-
-| Variable | Purpose |
-| --- | --- |
-| `INTERLIS_LSP_OPTS` | Extra JVM flags passed to the server process.
-| `INTERLIS_IDE_DISABLE_DIAGRAMS` | Skip UML/PlantUML generation when running in headless environments.
-
-## CLI helpers
-
-Use the VS Code command line interface to automate validations:
-
-```bash
-code --command interlis.compile.run --file ./models/LandUse.ili
-```
-
-The command returns JSON output that you can pipe to linting scripts or CI dashboards.
+You can also use the pure [Eclipse Theia IDE](https://theia-ide.org/) and install the very same extension. There is even a Docker image for Theia IDE that provides the browser-based application.
