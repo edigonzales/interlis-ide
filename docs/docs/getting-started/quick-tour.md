@@ -11,7 +11,7 @@ description: Discover the standout capabilities that make authoring INTERLIS mod
 - **Integrated toolchain** – the environment ships with a bundled language runtime and commands for compiling, diagramming, and exporting, keeping teams aligned on a consistent INTERLIS setup.
 
 ## Editing boost in action
-Typing `=` right after a `MODEL` header expands a full skeleton, complete with documentation banners, meta-attributes, and matching `END` statements while positioning the cursor at the next line you need to edit:
+Typing `=` right after a `MODEL`, `CLASS`, `STRUCTURE`, or `TOPIC` header expands a full skeleton, complete with documentation banners, meta-attributes, and matching `END` statements while positioning the cursor at the next line you need to edit:
 
 ```ili
 /** !!------------------------------------------------------------------------------
