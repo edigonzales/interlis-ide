@@ -1,4 +1,5 @@
 import type {ReactNode} from 'react';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
@@ -31,12 +32,14 @@ function HomepageHeader() {
 }
 
 function PreviewShowcase(): ReactNode {
+  const previewImageUrl = useBaseUrl('/img/preview.gif');
+
   return (
     <section className={styles.previewSection}>
       <div className="container">
         <img
           // className={styles.previewImage}
-          src="/img/preview.gif"
+          src={previewImageUrl}
           alt="Animated preview of the INTERLIS IDE documentation navigation"
         />
       </div>
