@@ -1,35 +1,57 @@
 ---
 title: Editor experience
-description: Leverage completions, diagnostics, and navigation tailored for INTERLIS modeling.
+description: Explore diagnostics, completions, navigation, formatting, and export capabilities for INTERLIS modeling.
 ---
 
-## Completions
+## Validation with diagnostics
+The server compiles INTERLIS models on open and save, converts ili2c messages to LSP diagnostics, and streams the compiler log to the client output channel for quick feedback.
 
-The completion provider triggers on `.` and `:` to suggest domains, classes, and attributes based on the compiled model. Items show
-rich metadata such as documentation comments and originating model files.
+## Smart completions
+Context-aware proposals for IMPORTS, dotted type references, and model names are built from the live compilation result and discovered repositories.
 
-- Start typing a topic alias followed by `.` to scope suggestions to that namespace.
-- Use `Ctrl+Space` to re-trigger completions when editing existing declarations.
+## Go to definition
+Jump to definitions inside the current workspace or linked model files based on the compiled transfer description.
 
-## Diagnostics
+## Symbol rename
+Rename models, topics, classes, structures, and associations while updating matching references across files.
 
-Whenever you save or open a file, the LSP compiles the model with ili2c and reports structural errors, naming conflicts, and
-validation issues. Diagnostics stream into the **Problems** panel and appear inline.
+## Document symbols
+Browse topics, classes, associations, domains, and attributes via the VS Code outline populated from the INTERLIS AST.
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam tincidunt turpis a nibh pellentesque, ut dignissim est ultrices.
+## Formatting & pretty print
+Format whole documents with ili2c’s pretty printer and on-type helpers.
 
-## Navigation
+## On-type templates
+Typing `=` after model, topic, class, or structure headers injects boilerplate blocks, meta-attributes, and matching `END` statements while restoring the caret.
 
-- **Go to definition** resolves across referenced models and opens the correct file even when it lives in the workspace cache.
-- **Find references** aggregates usages across topics so you can assess impact before refactoring.
-- **Document symbols** populate the outline view, grouping entities by topic.
+## Cached compilation
+Results are cached between document events for responsive completions and navigation.
 
-## Formatting
+## Diagram generation
+Generate Mermaid or PlantUML class diagrams from the compiled model and display them in the editor.
 
-Use `Shift+Alt+F` (or your editor shortcut) to run the ili2c pretty-printer. On-type formatting inserts alignment whitespace after `=`
-and keeps enumerations tidy.
+## HTML & DOCX exports
+Render human-readable documentation (including custom titles) as HTML or export styled Word documents.
 
-## Refactoring
+## VS Code client experience
 
-Rename declarations with `F2` to update references across all dependent models. The rename provider validates your input against
-INTERLIS naming rules before applying the edit.
+### Activation on INTERLIS files
+The extension activates for `.ili` files and contributes a TextMate grammar and language configuration for syntax highlighting and editor defaults.
+
+### Bundled runtime
+Ships with a self-contained fat JAR and optional platform-specific JRE; paths can be overridden via settings.
+
+### Commands palette
+Run "Compile current file", "Show UML class diagram", "Show PlantUML class diagram", "Show documentation as HTML", and "Export documentation as DOCX" directly from VS Code.
+
+### Integrated output channel
+Compiler logs land in a dedicated "INTERLIS LSP" output channel that can clear itself when new runs start.
+
+### Configurable repositories
+Choose preferred model repositories via settings passed to the server at initialization.
+
+### Caret-aware templates
+Caret tracking middleware makes sure auto-inserted templates leave the cursor at the expected position after edits are applied.
+
+### Webview downloads
+UML previews support saving generated SVG diagrams next to the source model.
