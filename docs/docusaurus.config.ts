@@ -85,6 +85,12 @@ const config: Config = {
           label: 'interlis.ch',
           position: 'right',
         },
+        {
+          href: 'https://github.com/edigonzales/theia-ide',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
+        },
       ],
     },
     footer: {
