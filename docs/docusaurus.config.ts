@@ -15,10 +15,11 @@ const config: Config = {
   },
 
   // Set the production url of your site here
-  url: 'https://interlis-ide.example.com',
+  url: 'https://edigonzales.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  baseUrl: '/interlis-ide',
+  //baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -49,7 +50,7 @@ const config: Config = {
       {
         docs: {
           sidebarPath: './sidebars.ts',
-          editUrl: 'https://github.com/eclipse-theia/theia-ide/tree/master/docs/',
+          editUrl: 'https://github.com/edigonzales/interlis-ide/tree/master/docs/',
         },
         blog: false,
         theme: {
@@ -89,7 +90,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/edigonzales/theia-ide',
+          href: 'https://github.com/edigonzales/interlis-ide',
           'aria-label': 'GitHub',
           className: 'navbar__icon navbar__github',
           position: 'right',
@@ -118,7 +119,7 @@ const config: Config = {
           items: [
             {
               label: 'INTERLIS IDE',
-              href: 'https://github.com/edigonzales/theia-ide',
+              href: 'https://github.com/edigonzales/interlis-ide',
             },            
             {
               label: 'INTERLIS Language Server',
@@ -139,7 +140,7 @@ const config: Config = {
           items: [
             {
               label: 'Report an issue',
-              href: 'https://github.com/edigonzales/theia-ide/issues',
+              href: 'https://github.com/edigonzales/interlis-ide/issues',
             },
           ],
         },

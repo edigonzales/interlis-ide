@@ -48,7 +48,7 @@ const FeatureList: FeatureItem[] = [
     ),
     cta: {
       label: 'Contribute ideas',
-      to: 'https://github.com/edigonzales/theia-ide/issues',
+      to: 'https://github.com/edigonzales/interlis-ide/issues',
     },
   },
 ];
