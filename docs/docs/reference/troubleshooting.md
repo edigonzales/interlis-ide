@@ -6,7 +6,7 @@ description: Resolve common issues when running the INTERLIS IDE stack.
 ## macOS builds are reported as "damaged"
 
 When you download an unsigned Electron build on macOS, Gatekeeper can show the error
-`<AppName> is damaged and can’t be opened. You should move it to the Trash.`”` if the
+`<AppName> is damaged and can’t be opened. You should move it to the Trash.` if the
 `com.apple.quarantine` extended attribute is present on the `.app` bundle. This typically
 happens when the archive is created on one machine, unpacked on another, and then
 re-packed multiple times during a CI workflow.

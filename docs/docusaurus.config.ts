@@ -89,7 +89,7 @@ const config: Config = {
           position: 'right',
         },
         {
-          href: 'https://github.com/eclipse-theia/theia-ide',
+          href: 'https://github.com/edigonzales/theia-ide',
           position: 'right',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
