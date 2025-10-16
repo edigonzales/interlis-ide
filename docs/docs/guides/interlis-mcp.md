@@ -1,5 +1,5 @@
 ---
-title: interlis-mcp MCP server
+title: INTERLIS MCP server
 description: Generate correct INTERLIS 2 schema snippets via the Spring AI powered interlis-mcp Model Context Protocol server.
 ---
 
