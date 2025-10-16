@@ -27,6 +27,7 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
   markdown: {
+    mermaid: true,
     hooks: {
       onBrokenMarkdownLinks: 'warn',
     },
@@ -39,6 +40,8 @@ const config: Config = {
     defaultLocale: 'en',
     locales: ['en'],
   },
+
+  themes: ['@docusaurus/theme-mermaid'],
 
   presets: [
     [
@@ -84,6 +87,12 @@ const config: Config = {
           href: 'https://interlis.ch',
           label: 'interlis.ch',
           position: 'right',
+        },
+        {
+          href: 'https://github.com/eclipse-theia/theia-ide',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },
