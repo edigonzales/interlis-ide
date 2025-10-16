@@ -55,12 +55,12 @@ jobs:
         with:
           python-version: '3.13'
   
-      - name: Build prod package 
+      - name: Build prod package
         if: runner.os != 'Linux' || runner.arch != 'ARM64'
         shell: bash
         run: |
           yarn --skip-integrity-check --network-timeout 100000
-          yarn build 
+          yarn build
           yarn download:plugins
           yarn electron package:prod
         env:
@@ -75,13 +75,82 @@ jobs:
           sudo apt-get install -y ruby ruby-dev build-essential rpm
           sudo gem install --no-document fpm
           yarn --skip-integrity-check --network-timeout 100000
-          yarn build 
+          yarn build
           yarn download:plugins
           yarn electron package:prod
         env:
           NODE_OPTIONS: --max-old-space-size=4096
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USE_SYSTEM_FPM: "true"
+
+      - name: Sanitize macOS artifacts
+        if: runner.os == 'macOS'
+        shell: bash
+        run: |
+          set -euo pipefail
+          shopt -s nullglob
+
+          work_root="$(mktemp -d)"
+          cleanup() {
+            if [ -d "$work_root/mnt" ] && mount | grep -q " $work_root/mnt "; then
+              hdiutil detach "$work_root/mnt" || hdiutil detach "$work_root/mnt" -force || true
+            fi
+            rm -rf "$work_root"
+          }
+          trap cleanup EXIT
+
+          # Rebuild macOS ZIPs using ditto so resource forks and extended attributes survive
+          for zip in applications/electron/dist/*-mac.zip; do
+            echo "Rebuilding $zip with sanitized bundle"
+            zip_dir="$work_root/zip"
+            rm -rf "$zip_dir"
+            mkdir -p "$zip_dir"
+
+            ditto -x -k "$zip" "$zip_dir"
+            app_path=$(find "$zip_dir" -maxdepth 1 -name '*.app' -print -quit)
+            if [ -z "${app_path}" ]; then
+              echo "No .app found in $zip; skipping"
+              continue
+            fi
+
+            xattr -cr "$app_path"
+
+            rebuilt_zip="$work_root/$(basename "$zip")"
+            ditto -c -k --sequesterRsrc --keepParent "$app_path" "$rebuilt_zip"
+            mv "$rebuilt_zip" "$zip"
+          done
+
+          # Rebuild DMGs from sanitized bundles to avoid quarantine warnings
+          for dmg in applications/electron/dist/*.dmg; do
+            echo "Rebuilding $dmg with sanitized bundle"
+            mount_dir="$work_root/mnt"
+            pkg_dir="$work_root/dmg"
+            rm -rf "$mount_dir" "$pkg_dir"
+            mkdir -p "$mount_dir" "$pkg_dir"
+
+            if ! hdiutil attach "$dmg" -nobrowse -mountpoint "$mount_dir" >"$work_root/hdiutil.log" 2>&1; then
+              echo "Failed to attach $dmg; see $work_root/hdiutil.log" >&2
+              continue
+            fi
+
+            app_path=$(find "$mount_dir" -maxdepth 1 -name '*.app' -print -quit)
+            if [ -z "${app_path}" ]; then
+              echo "No .app found in $dmg; detaching"
+              hdiutil detach "$mount_dir" || hdiutil detach "$mount_dir" -force || true
+              continue
+            fi
+
+            cp -R "$app_path" "$pkg_dir"
+            hdiutil detach "$mount_dir" || hdiutil detach "$mount_dir" -force || true
+
+            app_copy="$pkg_dir/$(basename "$app_path")"
+            xattr -cr "$app_copy"
+
+            volname="$(basename "$app_copy" .app)"
+            rebuilt_dmg="$work_root/$(basename "$dmg")"
+            hdiutil create -volname "$volname" -srcfolder "$pkg_dir" -ov -format UDZO "$rebuilt_dmg"
+            mv "$rebuilt_dmg" "$dmg"
+          done
 
       - name: Upload Mac Dist Files
         if: runner.os == 'macOS'
