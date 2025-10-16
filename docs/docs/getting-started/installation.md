@@ -1,49 +1,30 @@
 ---
 title: Install INTERLIS IDE
-description: Prepare your environment, install the IDE, and get the documentation site running locally.
+description: Download the ready-to-use desktop application for working with INTERLIS projects.
 ---
 
-## System requirements
+## Download INTERLIS IDE
 
-- **Node.js 20 or newer** – required for building the documentation site and running automation scripts.
-- **Java 17 or newer** – the INTERLIS language server is written with [LSP4J](https://projects.eclipse.org/projects/technology.lsp4j) and
-  relies on a modern JDK runtime.
-- **Git** – clone the repositories and manage workspace updates.
-- **An INTERLIS-aware editor** – the official INTERLIS IDE or VS Code with the INTERLIS extension.
+The INTERLIS IDE is distributed as prebuilt desktop packages on the [GitHub releases page](https://github.com/edigonzales/theia-ide/releases). Each release provides archives for the major operating systems:
 
-:::tip
-When working inside a container or CI runner, ensure the Java runtime is on the `PATH` before starting the language server. The
-VS Code extension launches the Java process automatically, but the binaries must be available.
-:::
+- **Linux** – x86_64 and arm64 builds.
+- **macOS** – Intel (x86_64) and Apple Silicon (arm64) builds.
+- **Windows** – x86_64 build.
 
-## Install the IDE tooling
+1. Download the archive for your platform from the latest release.
+2. Extract the downloaded archive into a folder of your choice.
+3. Launch the IDE using the platform-specific launcher contained in the extracted folder.
 
-1. Clone the IDE repository:
-   ```bash
-   git clone https://github.com/eclipse-theia/theia-ide.git
-   cd theia-ide
-   ```
-2. Retrieve the INTERLIS LSP packages and VS Code extension from the
-   [interlis-lsp monorepo](https://github.com/edigonzales/interlis-lsp).
-3. Install dependencies with Yarn or npm depending on your workflow. For a quick prototype you can run:
-   ```bash
-   yarn
-   yarn start
-   ```
-   This launches a Theia workspace with the INTERLIS extensions loaded.
-
-## Install the documentation site
-
-The documentation lives in the `/docs` directory of this repository. To install it locally:
+:::tip macOS Gatekeeper
+After unzipping `InterlisIDE.app`, remove the quarantine attribute so that macOS can open it:
 
 ```bash
-cd docs
-npm install
+xattr -dr com.apple.quarantine InterlisIDE.app
 ```
+:::
 
-You can now run the site in watch mode using `npm run start` or generate production assets using `npm run build`.
+## What's included
 
-## Next steps
-
-- Follow the [project setup walkthrough](project-setup.md) to create or import an INTERLIS project.
-- Read the [language server overview](../language-server/overview.md) to understand the architecture that powers code intelligence.
+- The desktop application is based on the open-source [Theia IDE](https://github.com/eclipse-theia/theia-ide) and has been rebranded for INTERLIS workflows.
+- The official INTERLIS editor experience comes from the bundled [Visual Studio Code extension](https://marketplace.visualstudio.com/items?itemName=edigonzales.interlis-editor).
+- A compatible Java runtime required by the extension is already packaged with the application—no separate JRE installation is needed.
