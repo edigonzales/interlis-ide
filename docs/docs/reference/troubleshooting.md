@@ -3,6 +3,11 @@ title: Troubleshooting guide
 description: Resolve common issues when running the INTERLIS IDE stack.
 ---
 
+## Missing compilation output 
+
+If you don't see the output of a compilation, e.g. after saving the model file, go to `View` 
+-> `Output`. Then choose `INTERLIS LSP` in the dropdown.
+
 ## macOS builds are reported as "damaged"
 
 When you download an unsigned Electron build on macOS, Gatekeeper can show the error
