@@ -3,7 +3,7 @@
   "name": "theia-ide-electron-app",
   "description": "INTERLIS IDE product",
   "productName": "InterlisIDE",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "main": "scripts/theia-electron-main.js",
   "license": "MIT",
   "author": "Eclipse Theia <theia-dev@eclipse.org>",
@@ -129,9 +129,9 @@
     "@theia/vsx-registry": "1.65.1",
     "@theia/workspace": "1.65.1",
     "fs-extra": "^9.0.1",
-    "theia-ide-launcher-ext": "0.0.2",
-    "theia-ide-product-ext": "0.0.2",
-    "theia-ide-webview-drag-guard-ext": "0.0.2"
+    "theia-ide-launcher-ext": "0.0.3",
+    "theia-ide-product-ext": "0.0.3",
+    "theia-ide-webview-drag-guard-ext": "0.0.3"
   },
   "devDependencies": {
     "@theia/cli": "1.65.1",
