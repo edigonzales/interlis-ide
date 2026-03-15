@@ -3,7 +3,7 @@
   "name": "theia-ide-browser-app",
   "description": "Eclipse Theia IDE browser product",
   "productName": "Theia IDE",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "license": "MIT",
   "author": "Eclipse Theia <theia-dev@eclipse.org>",
   "homepage": "https://interlis-ide.ch",
@@ -122,8 +122,8 @@
     "@theia/vsx-registry": "1.69.0",
     "@theia/workspace": "1.69.0",
     "fs-extra": "^9.0.1",
-    "theia-ide-product-ext": "0.0.8",
-    "theia-ide-webview-drag-guard-ext": "0.0.8"
+    "theia-ide-product-ext": "0.0.9",
+    "theia-ide-webview-drag-guard-ext": "0.0.9"
   },
   "devDependencies": {
     "@theia/cli": "1.69.0",
