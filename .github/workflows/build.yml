@@ -63,6 +63,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Validate release versions
+        if: startsWith(github.ref, 'refs/tags/v')
+        shell: bash
+        run: yarn verify:release-version --ref "${GITHUB_REF_NAME}"
+
       - name: Lint
         shell: bash
         run: yarn lint
@@ -206,6 +211,43 @@ jobs:
           pattern: "*"
           merge-multiple: false
           path: release_assets
+
+      - name: Validate release manifests
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          expected="${GITHUB_REF_NAME#v}"
+          found=0
+
+          check_manifest() {
+            local manifest="$1"
+            [ -f "$manifest" ] || return 0
+
+            found=1
+            local actual
+            actual="$(sed -n "s/^version: *//p" "$manifest" | head -n 1 | tr -d "'\r")"
+
+            if [ -z "$actual" ]; then
+              echo "Failed to read version from $manifest" >&2
+              exit 1
+            fi
+
+            if [ "$actual" != "$expected" ]; then
+              echo "Release manifest version mismatch in $manifest: expected $expected but found $actual" >&2
+              exit 1
+            fi
+          }
+
+          shopt -s nullglob
+          for manifest in release_assets/mac-*/latest-mac.yml release_assets/linux-*/latest-linux*.yml; do
+            check_manifest "$manifest"
+          done
+
+          if [ "$found" -ne 1 ]; then
+            echo "No release manifests found to validate." >&2
+            exit 1
+          fi
 
       - name: Debug 
         shell: bash

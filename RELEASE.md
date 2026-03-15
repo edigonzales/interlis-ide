@@ -73,6 +73,7 @@ yarn download:plugins
 yarn electron package:preview
 yarn electron test
 yarn electron package:prod
+yarn verify:release-version --ref "${RELEASE_TAG}"
 ```
 
 This proves that:
@@ -102,11 +103,20 @@ Open a PR against `master`. In the PR description, list:
 After the PR is merged:
 
 ```sh
+git fetch origin --tags
 git switch master
 git pull --ff-only origin master
-git tag -a "${RELEASE_TAG}" -m "INTERLIS IDE ${RELEASE_VERSION}"
+git show origin/master:package.json | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8')).version"
+git show origin/master:applications/electron/package.json | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8')).version"
+yarn verify:release-version --ref "${RELEASE_TAG}" --git-ref origin/master
+git tag -a "${RELEASE_TAG}" origin/master -m "INTERLIS IDE ${RELEASE_VERSION}"
+git show "${RELEASE_TAG}^{}":package.json | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8')).version"
+git show "${RELEASE_TAG}^{}":applications/electron/package.json | node -p "JSON.parse(require('fs').readFileSync(0, 'utf8')).version"
+yarn verify:release-version --ref "${RELEASE_TAG}" --git-ref "${RELEASE_TAG}^{}"
 git push origin "${RELEASE_TAG}"
 ```
+
+If either `git show` or `yarn verify:release-version` reports anything other than `${RELEASE_VERSION}`, stop and do not push the tag. This is the guardrail against accidentally tagging an older local commit such as `0.0.7`.
 
 ## 7. Verify the GitHub release
 

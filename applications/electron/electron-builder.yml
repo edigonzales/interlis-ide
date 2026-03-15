@@ -69,13 +69,13 @@ nsis:
   uninstallerSidebar: resources/icons/InstallerSidebarImage/164-314Windows.bmp
   allowToChangeInstallationDirectory: true
   runAfterFinish: false
-  artifactName: ${productName}Setup.${ext}
+  artifactName: ${productName}Setup-${version}.${ext}
   license: LICENSE
 dmg:
-  artifactName: ${productName}.${ext}
+  artifactName: ${productName}-${version}.${ext}
 deb:
-  artifactName: ${productName}.${ext}
+  artifactName: ${productName}-${version}.${ext}
 appImage:
-  artifactName: ${productName}.${ext}
+  artifactName: ${productName}-${version}.${ext}
 
 afterPack: ./scripts/after-pack.js
