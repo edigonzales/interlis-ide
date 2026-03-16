@@ -1,13 +1,11 @@
-name: Build Theia IDE Next Release (Linux)
+name: Build INTERLIS IDE Next Preview (Manual, Linux)
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "0 2 * * 1-5" # Runs every weekday at 2am UTC
 
 jobs:
   build:
-    name: Build Next Release (Linux only)
+    name: Build Next Preview (Linux only)
     runs-on: ubuntu-22.04
     timeout-minutes: 60
 
@@ -71,8 +69,8 @@ jobs:
           gh release delete next --yes --cleanup-tag 2>/dev/null || true
           # Create a new pre-release with the next tag
           gh release create next \
-            --title "Next Build - Ubuntu AppImage (${{ env.THEIA_IDE_VERSION }})" \
-            --notes "Automated next build of the Ubuntu AppImage from \`master\` ($(date -u '+%Y-%m-%d %H:%M UTC'))." \
+            --title "Manual Next Preview - Ubuntu AppImage (${{ env.THEIA_IDE_VERSION }})" \
+            --notes "Manually triggered preview build of the Ubuntu AppImage from \`master\` ($(date -u '+%Y-%m-%d %H:%M UTC')). This is not a stable INTERLIS IDE release." \
             --prerelease \
             --target ${{ github.sha }} \
             applications/electron-next/dist/TheiaIDENext.AppImage \

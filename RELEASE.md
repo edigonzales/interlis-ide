@@ -122,11 +122,19 @@ If either `git show` or `yarn verify:release-version` reports anything other tha
 
 Pushing `v0.0.X` triggers [.github/workflows/build.yml](.github/workflows/build.yml), which creates the GitHub Release automatically.
 
+Merging a PR into `master` does not create a stable GitHub Release. Pull requests and `master` pushes still run build, test, and packaging jobs, but only a `v*` tag creates the stable release entry and assets.
+
 Check the workflow and the resulting release for:
 
 - successful build jobs on all configured platforms
 - generated release notes
 - expected artifacts such as `.zip`, `.dmg`, `.exe`, `.deb`, `.AppImage`, and `latest-mac.yml`
 - correct `latest` marker on GitHub so the stable updater continues to work
+
+## Optional: build the `next` preview manually
+
+The `next` preview channel is separate from the stable release flow. It does not run on a schedule anymore and does not publish a stable release.
+
+If you explicitly want a preview build against the `electron-next` application, start [.github/workflows/build-next-release.yml](.github/workflows/build-next-release.yml) manually from the GitHub Actions UI. That workflow publishes a `next` pre-release for ad hoc testing only.
 
 If the release also changed the public docs under `docs/**`, the docs deployment workflow will run separately after the merge to `master`.
