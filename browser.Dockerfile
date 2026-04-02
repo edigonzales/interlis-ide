@@ -5,6 +5,7 @@ FROM node:22-bullseye AS build-stage
 RUN apt-get update && apt-get install -y libxkbfile-dev libsecret-1-dev
 
 WORKDIR /home/theia
+ENV NODE_OPTIONS=--max-old-space-size=4096
 
 # Copy repository files
 COPY . .
@@ -29,6 +30,16 @@ RUN yarn config set network-timeout 600000 -g && \
 # Production stage uses a small base image
 FROM node:22-bullseye-slim AS production-stage
 
+ARG OCI_IMAGE_SOURCE=https://github.com/edigonzales/interlis-ide
+ARG OCI_IMAGE_REVISION=unknown
+ARG OCI_IMAGE_VERSION=unknown
+
+LABEL org.opencontainers.image.title="INTERLIS IDE" \
+      org.opencontainers.image.description="Browser-based INTERLIS IDE built on Eclipse Theia" \
+      org.opencontainers.image.source="${OCI_IMAGE_SOURCE}" \
+      org.opencontainers.image.revision="${OCI_IMAGE_REVISION}" \
+      org.opencontainers.image.version="${OCI_IMAGE_VERSION}"
+
 # Create theia user and directories
 # Application will be copied to /home/theia
 # Default workspace is located at /home/project
@@ -45,7 +56,7 @@ RUN apt-get update && apt-get install -y wget apt-transport-https && \
     apt-get purge -y wget && \
     apt-get clean
 
-ENV HOME /home/theia
+ENV HOME=/home/theia
 WORKDIR /home/theia
 
 # Copy application from builder-stage
@@ -58,7 +69,7 @@ ENV SHELL=/bin/bash \
     THEIA_DEFAULT_PLUGINS=local-dir:/home/theia/plugins
 
 # Use installed git instead of dugite
-ENV USE_LOCAL_GIT true
+ENV USE_LOCAL_GIT=true
 
 # Switch to Theia user
 USER theia

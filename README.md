@@ -69,6 +69,24 @@ yarn electron package:prod
 yarn lint
 ```
 
+## Docker image
+
+The official container target in this fork is the browser application defined in `browser.Dockerfile`. Electron release packaging remains unchanged and continues to ship through the existing GitHub Releases workflow.
+
+Build the browser image locally:
+
+```sh
+docker build -f browser.Dockerfile -t interlis-ide:local .
+```
+
+Run it with the current repository mounted as the default workspace:
+
+```sh
+docker run --rm -p 3000:3000 -v "$PWD:/home/project" interlis-ide:local
+```
+
+Stable release tags matching `v*` publish multi-architecture browser images to GHCR and Docker Hub. Pull requests, pushes to `master`, and manual workflow runs only build the image for verification and do not publish it.
+
 ## Maintainer documentation
 
 - [RELEASE.md](RELEASE.md): create a new INTERLIS IDE product release such as `0.0.8 -> 0.0.9`
