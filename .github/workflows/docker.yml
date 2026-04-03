@@ -62,6 +62,7 @@ jobs:
           echo "is_publish=${is_publish}" >> "$GITHUB_OUTPUT"
           echo "image_source=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" >> "$GITHUB_OUTPUT"
           echo "ghcr_image=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/interlis-ide" >> "$GITHUB_OUTPUT"
+          echo "dockerhub_image=docker.io/edigonzales/interlis-ide" >> "$GITHUB_OUTPUT"
 
       - name: Set up QEMU
         if: ${{ steps.vars.outputs.is_publish == 'true' }}
@@ -88,7 +89,7 @@ jobs:
         with:
           images: |
             ${{ steps.vars.outputs.ghcr_image }}
-            docker.io/${{ secrets.DOCKERHUB_USERNAME }}/interlis-ide
+            ${{ steps.vars.outputs.dockerhub_image }}
           tags: |
             type=raw,value=latest,enable=${{ steps.vars.outputs.is_master_push == 'true' }}
             type=semver,pattern={{version}},enable=${{ steps.vars.outputs.is_release_tag == 'true' }}
