@@ -37,35 +37,52 @@ jobs:
         run: |
           set -euo pipefail
 
-          if [[ "${GITHUB_REF_TYPE}" == "tag" && "${GITHUB_REF_NAME}" == v* ]]; then
-            echo "image_version=${GITHUB_REF_NAME#v}" >> "$GITHUB_OUTPUT"
+          ref_type="${GITHUB_REF_TYPE:-}"
+          ref_name="${GITHUB_REF_NAME:-}"
+
+          is_master_push=false
+          is_release_tag=false
+          is_publish=false
+
+          if [[ "${GITHUB_EVENT_NAME}" == "push" && "${GITHUB_REF}" == "refs/heads/master" ]]; then
+            is_master_push=true
+            is_publish=true
+          fi
+
+          if [[ "${ref_type}" == "tag" && "${ref_name}" == v* ]]; then
+            is_release_tag=true
+            is_publish=true
+            echo "image_version=${ref_name#v}" >> "$GITHUB_OUTPUT"
           else
             echo "image_version=dev-${GITHUB_SHA::12}" >> "$GITHUB_OUTPUT"
           fi
 
+          echo "is_master_push=${is_master_push}" >> "$GITHUB_OUTPUT"
+          echo "is_release_tag=${is_release_tag}" >> "$GITHUB_OUTPUT"
+          echo "is_publish=${is_publish}" >> "$GITHUB_OUTPUT"
           echo "image_source=${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}" >> "$GITHUB_OUTPUT"
           echo "ghcr_image=ghcr.io/${GITHUB_REPOSITORY_OWNER,,}/interlis-ide" >> "$GITHUB_OUTPUT"
 
       - name: Set up QEMU
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: ${{ steps.vars.outputs.is_publish == 'true' }}
         uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
       - name: Validate Docker Hub secrets
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: ${{ steps.vars.outputs.is_publish == 'true' }}
         shell: bash
         run: |
           set -euo pipefail
 
           if [[ -z "${{ secrets.DOCKERHUB_USERNAME }}" || -z "${{ secrets.DOCKERHUB_TOKEN }}" ]]; then
-            echo "DOCKERHUB_USERNAME and DOCKERHUB_TOKEN must be configured for tag publishes." >&2
+            echo "DOCKERHUB_USERNAME and DOCKERHUB_TOKEN must be configured for image publishes." >&2
             exit 1
           fi
 
       - name: Extract publish metadata
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: ${{ steps.vars.outputs.is_publish == 'true' }}
         id: meta
         uses: docker/metadata-action@v5
         with:
@@ -73,14 +90,15 @@ jobs:
             ${{ steps.vars.outputs.ghcr_image }}
             docker.io/${{ secrets.DOCKERHUB_USERNAME }}/interlis-ide
           tags: |
-            type=semver,pattern={{version}}
-            type=raw,value=latest
+            type=raw,value=latest,enable=${{ steps.vars.outputs.is_master_push == 'true' }}
+            type=semver,pattern={{version}},enable=${{ steps.vars.outputs.is_release_tag == 'true' }}
+            type=raw,value=latest,enable=${{ steps.vars.outputs.is_release_tag == 'true' }}
           labels: |
             org.opencontainers.image.title=INTERLIS IDE
             org.opencontainers.image.description=Browser-based INTERLIS IDE built on Eclipse Theia
 
       - name: Log in to GitHub Container Registry
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: ${{ steps.vars.outputs.is_publish == 'true' }}
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
@@ -88,14 +106,14 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Log in to Docker Hub
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: ${{ steps.vars.outputs.is_publish == 'true' }}
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build browser image for verification
-        if: ${{ !startsWith(github.ref, 'refs/tags/v') }}
+        if: ${{ steps.vars.outputs.is_publish != 'true' }}
         uses: docker/build-push-action@v6
         with:
           context: .
@@ -108,7 +126,7 @@ jobs:
             OCI_IMAGE_VERSION=${{ steps.vars.outputs.image_version }}
 
       - name: Build and publish browser image
-        if: startsWith(github.ref, 'refs/tags/v')
+        if: ${{ steps.vars.outputs.is_publish == 'true' }}
         uses: docker/build-push-action@v6
         with:
           context: .

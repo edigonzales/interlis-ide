@@ -85,7 +85,7 @@ Run it with the current repository mounted as the default workspace:
 docker run --rm -p 3000:3000 -v "$PWD:/home/project" interlis-ide:local
 ```
 
-Stable release tags matching `v*` publish multi-architecture browser images to GHCR and Docker Hub. Pull requests, pushes to `master`, and manual workflow runs only build the image for verification and do not publish it.
+Pushes to `master` publish the multi-architecture browser image as `latest` to GHCR and Docker Hub. Stable release tags matching `v*` publish the versioned release image and also refresh `latest`. Pull requests and manual workflow runs only build the image for verification and do not publish it.
 
 ## Maintainer documentation
 
