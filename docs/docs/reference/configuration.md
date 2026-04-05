@@ -1,30 +1,16 @@
 ---
-title: Configuration reference
-description: Adjust language server behavior and IDE integration details.
+title: Konfiguration und Einstellungen
+description: Hinweis für bestehende Links auf die aktuelle Einstellungsreferenz.
 ---
 
-## Workspace settings
+## Wofür ist diese Seite gut?
 
-```json title="settings.json"
-{
-  "interlisLsp.server.jarPath": "${workspaceFolder}/server/interlis-lsp-all.jar",
-  "interlisLsp.javaPath": "/usr/lib/jvm/java-21-openjdk/bin/java",
-  "interlisLsp.modelRepositories": "https://models.local,https://models.remote",
-  "interlisLsp.autoShowOutputOnStart": true
-}
-```
+Diese Seite bleibt für alte Verweise erhalten. Die eigentliche Benutzerreferenz zu den Einstellungen steht jetzt gesammelt unter `Referenz -> Einstellungen`.
 
-- `interlisLsp.server.jarPath` overrides the bundled language server JAR.
-- `interlisLsp.javaPath` points to a custom Java runtime if the bundled runtime is missing.
-- `interlisLsp.modelRepositories` defines comma-separated repositories resolved by the model discovery service and completion engine.
-- `interlisLsp.autoShowOutputOnStart` shows the INTERLIS output channel when the extension activates.
+## So benutzt du sie
 
-## CLI helpers
+Nutze für den aktuellen Stand die Seite `Einstellungen`. Dort sind die alltagsrelevanten Optionen und die fortgeschrittenen Laufzeit-Einstellungen gemeinsam dokumentiert.
 
-Use the VS Code command line interface to automate validations:
+## Darauf solltest du achten
 
-```bash
-code --command interlis.compile.run --file ./models/LandUse.ili
-```
-
-The command returns JSON output that you can pipe to linting scripts or CI dashboards.
+Die alte Aufteilung in mehrere Konfigurationsseiten wurde bewusst reduziert, damit Anwender Einstellungen nicht an mehreren Stellen zusammensuchen müssen.

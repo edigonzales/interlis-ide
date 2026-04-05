@@ -1,21 +1,28 @@
 ---
 id: intro
-title: Welcome to INTERLIS IDE
+title: INTERLIS IDE im Alltag
 sidebar_position: 1
-description: Discover the INTERLIS-focused IDE experience and how the documentation is organized.
+description: Einstieg in die Benutzerdokumentation für das Schreiben, Prüfen und Dokumentieren von INTERLIS-Modellen.
 ---
 
-INTERLIS IDE is a tailored development workspace for the INTERLIS data language. The project brings together a Java-based
-Language Server Protocol (LSP), a VS Code extension, and rich tooling built on top of Theia. This documentation site helps you
-install the tooling, explore core workflows, and contribute to the ecosystem.
+Der INTERLIS Editor unterstützt dich beim Schreiben, Prüfen und Dokumentieren von `.ili`-Modellen direkt in der IDE. Diese Dokumentation zeigt die Funktionen aus Anwendersicht und erklärt typische Arbeitsabläufe statt technischer Interna.
 
-## How this guide is organized
+## Wofür ist diese Dokumentation gut?
 
-- **Getting Started** – Install the IDE, connect to the INTERLIS LSP, and import your first models.
-- **IDE Guides** – Learn all the features that the IDE offers and even more with the INTERLIS MCP.
-- **Language Server** – Dive into the Java LSP implementation, its capabilities, and how the VS Code extension communicates
-  with it.
-- **Reference** – Consult configuration keys, CLI helpers, and troubleshooting recipes when something misbehaves.
-- **Community** – Understand the roadmap and how to collaborate on INTERLIS tooling initiatives.
+Die Doku richtet sich an alle, die in der IDE Modelle bearbeiten und dabei möglichst schnell zu einem korrekten, nachvollziehbaren Ergebnis kommen wollen. Im Mittelpunkt stehen daher Aufgaben wie:
 
-Continue with the next page to install and configure INTERLIS IDE for your environment.
+- Modelle anlegen und bearbeiten
+- Fehler und Warnungen verstehen
+- Vorschläge, Navigation und Rename sicher nutzen
+- Diagramme und Dokumentation erzeugen
+- typische Probleme im Alltag lösen
+
+> Screenshot-Empfehlung: Hero-Screenshot mit Texteditor links, Problems-Ansicht unten und Diagrammeditor rechts.
+
+## So benutzt du diese Dokumentation
+
+Beginne mit **Erste Schritte**, wenn du den Editor neu einrichtest oder mit einem frischen Modell startest. Für den täglichen Einsatz ist danach vor allem der Bereich **Modellieren in VS Code** relevant. Alles, was Diagramme, HTML-Vorschau oder DOCX-Export betrifft, ist unter **Diagramme und Dokumentation** gebündelt. Die **Referenz** dient als Nachschlagewerk für Kommandos, Einstellungen, Grenzen und Hilfe bei Problemen.
+
+## Darauf solltest du achten
+
+Die IDE unterstützt dich stark beim Modellieren, ersetzt aber nicht den fachlichen Review des Modells. Manche Funktionen liefern sofortiges Feedback während des Tippens, andere werden erst nach dem Speichern oder nach einem erneuten Kompilieren wirklich aussagekräftig. Wenn eine Funktion unerwartet wenig zeigt, ist ein gespeichertes und möglichst fehlerarmes Modell meistens die beste Ausgangslage.

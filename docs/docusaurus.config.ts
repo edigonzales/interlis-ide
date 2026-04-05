@@ -6,7 +6,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
   title: 'INTERLIS IDE',
-  tagline: 'A dedicated workspace for modeling data with INTERLIS.',
+  tagline: 'Arbeitsumgebung für INTERLIS-Modelle mit Prüfung, Navigation und Diagrammen.',
   favicon: 'img/ililogo1024.png',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -77,11 +77,11 @@ const config: Config = {
           type: 'docSidebar',
           sidebarId: 'docsSidebar',
           position: 'left',
-          label: 'Documentation',
+          label: 'Dokumentation',
         },
         {
           href: 'https://www.ech.ch/de/ech/ech-0031/2.1.0',
-          label: 'INTERLIS Specification',
+          label: 'INTERLIS-Spezifikation',
           position: 'right',
         },
         {
@@ -102,25 +102,38 @@ const config: Config = {
       style: 'dark',
       links: [
         {
-          title: 'Learn',
+          title: 'Einstieg',
           items: [
             {
               label: 'Installation',
               to: '/docs/getting-started/installation',
             },
             {
-              label: 'Editor',
-              to: '/docs/guides/editor-experience',
+              label: 'Erstes Modell',
+              to: '/docs/getting-started/first-model',
             },
           ],
         },
         {
-          title: 'Ecosystem',
+          title: 'Funktionen',
+          items: [
+            {
+              label: 'Modellieren in VS Code',
+              to: '/docs/editing/completion-and-snippets',
+            },
+            {
+              label: 'Diagramme und Dokumentation',
+              to: '/docs/diagrams/diagram-editor',
+            },
+          ],
+        },
+        {
+          title: 'Ökosystem',
           items: [
             {
               label: 'INTERLIS IDE',
               href: 'https://github.com/edigonzales/interlis-ide',
-            },            
+            },
             {
               label: 'INTERLIS Language Server',
               href: 'https://github.com/edigonzales/interlis-lsp',
@@ -128,7 +141,7 @@ const config: Config = {
             {
               label: 'VS Code Extension',
               href: 'https://marketplace.visualstudio.com/items?itemName=edigonzales.interlis',
-            },            
+            },
             {
               label: 'INTERLIS MCP',
               href: 'https://github.com/edigonzales/interlis-mcp',
@@ -136,16 +149,16 @@ const config: Config = {
           ],
         },
         {
-          title: 'Community',
+          title: 'Mitwirken',
           items: [
             {
-              label: 'Report an issue',
+              label: 'Issue melden',
               href: 'https://github.com/edigonzales/interlis-ide/issues',
             },
           ],
         },
       ],
-      copyright: `© ${new Date().getFullYear()} INTERLIS IDE contributors. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} Mitwirkende an INTERLIS IDE. Erstellt mit Docusaurus.`,
     },
     prism: {
       theme: prismThemes.github,

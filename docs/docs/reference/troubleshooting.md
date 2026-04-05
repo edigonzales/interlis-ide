@@ -1,40 +1,44 @@
 ---
-title: Troubleshooting guide
-description: Resolve common issues when running the INTERLIS IDE stack.
+title: Probleme beheben
+description: Häufige Probleme beim Arbeiten mit INTERLIS IDE schnell eingrenzen und lösen.
 ---
 
-## Missing compilation output 
+## Wofür ist diese Funktion gut?
 
-If you don't see the output of a compilation, e.g. after saving the model file, go to `View` 
--> `Output`. Then choose `INTERLIS LSP` in the dropdown.
+Diese Seite hilft dir bei typischen Alltagsproblemen: kein Output, fehlende Vorschläge, kein Diagramm oder Probleme beim Start der Anwendung.
 
-## macOS builds are reported as "damaged"
+## So benutzt du sie
 
-When you download an unsigned Electron build on macOS, Gatekeeper can show the error
-`<AppName> is damaged and can’t be opened. You should move it to the Trash.` if the
-`com.apple.quarantine` extended attribute is present on the `.app` bundle. This typically
-happens when the archive is created on one machine, unpacked on another, and then
-re-packed multiple times during a CI workflow.
+### Ich sehe keine Compile-Ausgabe
 
-To reduce the chance of the message appearing:
+Öffne `View -> Output` und wähle im Dropdown `INTERLIS LSP`. Wenn der Output leer bleibt, speichere die Datei erneut oder führe `INTERLIS: Compile current file` aus.
 
-1. Build and package the `.app`, `.dmg`, and `.zip` entirely on the macOS runner. Avoid
-   downloading, unzipping, and re-zipping the app on Linux or Windows runners because
-   these tools strip the metadata that Gatekeeper expects.
-2. Before creating the final DMG or ZIP, clear the quarantine attribute in your workflow
-   (for example, `xattr -cr InterlisIDE.app`). When the attribute is absent at packaging
-   time, Gatekeeper shows the standard “unidentified developer” dialog instead of the
-   “damaged” message. Re-run `xattr` after every step that unpacks the bundle in CI.
-3. Use `ditto -c -k --sequesterRsrc --keepParent` to generate ZIP archives. `ditto` preserves
-   the bundle structure and extended attributes better than the default `zip` utility.
-4. Document the manual workaround for users who still encounter the dialog, e.g.
-   `xattr -dr com.apple.quarantine /Applications/InterlisIDE.app`.
+### Ich bekomme keine sinnvollen Vorschläge
 
-Ultimately, the only way to prevent the warning completely is to sign and notarize your
-macOS artifacts. Until that is possible, the steps above make the build behave more like an
-unsigned download from an “unknown developer” and avoid the more alarming “damaged”
-message.
+Prüfe diese Punkte in dieser Reihenfolge:
 
-## Need more help?
+- Die Datei hat die Endung `.ili`.
+- Der Sprachmodus ist `INTERLIS`.
+- Die Datei wurde mindestens einmal gespeichert.
+- Das Modell ist im aktuellen Zustand nicht vollständig durch frühe Grundfehler blockiert.
+- Externe Modellquellen sind unter `interlisLsp.modelRepositories` korrekt eingetragen.
 
-Open an issue on the [INTERLIS IDE GitHub tracker](https://github.com/edigonzales/interlis-ide/issues) or join the community spaces linked in the footer of this site.
+### Das Diagramm fehlt oder ist veraltet
+
+Speichere die Datei und öffne dann `INTERLIS: Open diagram editor`. Wenn das Diagramm bereits offen ist, nutze `INTERLIS: Force refresh active diagram`. Für ein saubereres Bild hilft oft zusätzlich `INTERLIS: Auto-layout active diagram`.
+
+### Rename oder Navigation liefern nichts
+
+Setze den Cursor direkt auf ein Modellsymbol, nicht auf freien Text oder nur auf ein Kommentarfragment. Wenn das Modell stark inkonsistent ist, behebe zuerst die gravierendsten Fehler und probiere es danach erneut.
+
+### Die Anwendung lässt sich unter macOS nicht öffnen
+
+Bei unsignierten Downloads kann macOS die App blockieren. In vielen Fällen hilft:
+
+```bash
+xattr -dr com.apple.quarantine InterlisIDE.app
+```
+
+## Darauf solltest du achten
+
+Viele Probleme haben dieselbe erste Lösung: Datei speichern, Problems-Ansicht prüfen, den Output-Kanal öffnen und den betroffenen Befehl gezielt erneut ausführen. Wenn das nicht reicht, melde ein Issue unter [github.com/edigonzales/interlis-ide/issues](https://github.com/edigonzales/interlis-ide/issues).
