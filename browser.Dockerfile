@@ -12,19 +12,32 @@ COPY . .
 
 # Remove unnecesarry files for the browser application
 # Download plugins and build application production mode
+# Pin Yarn Classic explicitly because this monorepo relies on Yarn 1 behavior.
+RUN set -eux; \
+    corepack enable; \
+    corepack prepare yarn@1.22.22 --activate; \
+    yarn --version
+
+RUN set -eux; \
+    yarn config set network-timeout 600000 -g; \
+    yarn --frozen-lockfile
+
+RUN set -eux; \
+    yarn build:extensions; \
+    yarn download:plugins; \
+    yarn browser build
+
+RUN set -eux; \
+    yarn --frozen-lockfile
+
 # Use yarn autoclean to remove unnecessary files from package dependencies
-RUN yarn config set network-timeout 600000 -g && \
-    yarn --pure-lockfile && \
-    yarn build:extensions && \
-    yarn download:plugins && \
-    yarn browser build && \
-    yarn && \
-    yarn autoclean --init && \
-    echo *.ts >> .yarnclean && \
-    echo *.ts.map >> .yarnclean && \
-    echo *.spec.* >> .yarnclean && \
-    yarn autoclean --force && \
-    yarn cache clean && \
+RUN set -eux; \
+    yarn autoclean --init; \
+    echo *.ts >> .yarnclean; \
+    echo *.ts.map >> .yarnclean; \
+    echo *.spec.* >> .yarnclean; \
+    yarn autoclean --force; \
+    yarn cache clean; \
     rm -rf .git applications/electron theia-extensions/launcher theia-extensions/updater node_modules
 
 # Production stage uses a small base image
