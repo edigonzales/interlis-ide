@@ -1,0 +1,97 @@
+project:
+  type: website
+  preview:
+    port: 3000
+    browser: false
+
+website:
+  title: "INTERLIS IDE"
+  site-url: https://edigonzales.github.io/interlis-ide
+  favicon: images/ililogo1024.png
+  navbar:
+    pinned: true
+    logo: images/ililogo1024.png
+    logo-alt: INTERLIS IDE logo
+    search: true
+    left:
+      - text: "Start"
+        href: index.qmd
+      - text: "Dokumentation"
+        href: intro.qmd
+    right:
+      - text: "INTERLIS-Spezifikation"
+        href: https://www.ech.ch/de/ech/ech-0031/2.1.0
+      - text: "interlis.ch"
+        href: https://interlis.ch
+      - icon: github
+        href: https://github.com/edigonzales/interlis-ide
+        aria-label: GitHub
+  sidebar:
+    style: "docked"
+    search: false
+    contents:
+      - section: "Start"
+        contents:
+          - text: "INTERLIS IDE im Alltag"
+            href: intro.qmd
+      - section: "Erste Schritte"
+        contents:
+          - text: "Installation"
+            href: getting-started/installation.qmd
+          - text: "Erstes Modell"
+            href: getting-started/first-model.qmd
+          - text: "5-Minuten-Tour"
+            href: getting-started/quick-tour.qmd
+          - text: "Konfiguration im Einstieg"
+            href: getting-started/configuration.qmd
+      - section: "Modellieren in VS Code"
+        contents:
+          - text: "Validierung und Problems-Ansicht"
+            href: editing/validation-and-problems.qmd
+          - text: "Vervollständigung und Snippets"
+            href: editing/completion-and-snippets.qmd
+          - text: "Formatierung"
+            href: editing/formatting.qmd
+          - text: "Navigation, Outline und Rename"
+            href: editing/navigation-and-rename.qmd
+          - text: "Importe und Modell-Repositories"
+            href: editing/imports-and-repositories.qmd
+      - section: "Diagramme und Dokumentation"
+        contents:
+          - text: "Diagrammeditor"
+            href: diagrams/diagram-editor.qmd
+          - text: "UML-Vorschauen und GraphML"
+            href: diagrams/uml-previews.qmd
+          - text: "HTML-Vorschau und DOCX-Export"
+            href: diagrams/documentation-output.qmd
+      - section: "Referenz"
+        contents:
+          - text: "Kommandos"
+            href: reference/commands.qmd
+          - text: "Einstellungen"
+            href: reference/settings.qmd
+          - text: "Grenzen und Verhalten"
+            href: reference/limits-and-behavior.qmd
+          - text: "Probleme beheben"
+            href: reference/troubleshooting.qmd
+  page-footer:
+    left: "Copyright 2026 Mitwirkende an INTERLIS IDE"
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    toc-depth: 3
+    link-external-newwindow: true
+    mainfont: "Noto Sans"
+    grid:
+      sidebar-width: 290px
+      margin-width: 0px
+      body-width: 1150px
+    header-includes: |
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+editor: visual

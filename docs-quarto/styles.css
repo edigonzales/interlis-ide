@@ -1,0 +1,73 @@
+:root {
+  --ili-primary: #0564a9;
+  --ili-primary-dark: #045990;
+  --ili-primary-light: #0674c4;
+  --ili-bg: #f6f9fc;
+  --ili-surface: #ffffff;
+  --ili-text: #1f2a37;
+  --ili-muted: #5f6b7a;
+}
+
+body {
+  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--ili-bg);
+  color: var(--ili-text);
+}
+
+h1, h2, h3, h4, h5, h6,
+.navbar-title,
+.sidebar-title,
+.sidebar-item,
+.nav-link,
+.btn {
+  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.navbar {
+  background: var(--ili-surface);
+  border-bottom: 1px solid rgba(5, 100, 169, 0.12);
+  box-shadow: 0 1px 8px rgba(5, 100, 169, 0.07);
+}
+
+.navbar-brand-container .navbar-brand .navbar-logo {
+  max-height: 30px;
+}
+
+.sidebar-navigation {
+  background: var(--ili-surface);
+  border-right: 1px solid rgba(5, 100, 169, 0.12);
+}
+
+.sidebar-item {
+  border-left: 3px solid transparent;
+}
+
+.sidebar-item-container .active,
+.sidebar-item.active {
+  border-left-color: var(--ili-primary);
+  background: rgba(5, 100, 169, 0.08);
+  color: var(--ili-primary-dark);
+}
+
+a {
+  color: var(--ili-primary);
+}
+
+a:hover {
+  color: var(--ili-primary-light);
+}
+
+#title-block-header {
+  display: none;
+}
+
+.nav-footer,
+.footer {
+  background: var(--ili-surface);
+  border-top: 1px solid rgba(5, 100, 169, 0.12);
+  color: var(--ili-muted);
+}
+
+.quarto-container-page {
+  background: transparent;
+}

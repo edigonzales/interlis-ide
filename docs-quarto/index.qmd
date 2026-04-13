@@ -1,0 +1,19 @@
+---
+pagetitle: INTERLIS IDE
+page-layout: custom
+search: false
+toc: false
+css: index.css
+---
+
+::: {.hero-banner}
+# INTERLIS IDE
+
+## Arbeitsumgebung für INTERLIS-Modelle mit Prüfung, Navigation und Diagrammen.
+
+[Get started](intro.qmd){.btn .btn-action .btn-action-primary role="button"}
+:::
+
+::: {.preview-wrap}
+![Vorschau der INTERLIS IDE](images/preview.gif){.preview-image}
+:::
