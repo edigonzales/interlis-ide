@@ -13,42 +13,42 @@ type FeatureItem = {
 
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Schnell ins erste Modell',
+    title: 'Model-centric workflows',
     description: (
       <>
-        Lege ein neues `.ili`-Modell an, speichere es früh und nutze die wichtigsten Hilfen
-        direkt aus der Command Palette und aus dem Editor heraus.
+        Bring your INTERLIS models into a single workspace. Launch compile and export
+        commands from the command palette.
       </>
     ),
     cta: {
-      label: 'Erstes Modell',
-      to: '/docs/getting-started/first-model',
+      label: 'Start modeling',
+      to: '/docs/intro',
     },
   },
   {
-    title: 'Bearbeiten und prüfen',
+    title: 'Language intelligence',
     description: (
       <>
-        Nutze Problems-Ansicht, Vervollständigung, Outline, Navigation und Rename für einen
-        flüssigen Modellierungsalltag in VS Code.
+        The Java LSP delivers completions, navigation, and formatting powered by ili2c. Tailor diagnostics and rename workflows
+        to your organization&apos;s conventions.
       </>
     ),
     cta: {
-      label: 'Editorfunktionen',
-      to: '/docs/editing/completion-and-snippets',
+      label: 'Review capabilities',
+      to: '/docs/language-server/capabilities',
     },
   },
   {
-    title: 'Diagramme und Ausgabe',
+    title: 'Open ecosystem',
     description: (
       <>
-        Erzeuge Diagramme, HTML-Vorschauen und DOCX-Ausgaben direkt aus dem Modell und
-        verwende sie für Reviews und Weitergabe.
+        Extend the IDE, the extension or the INTERLIC MCP with missing features or fix an issue. Collaborate through GitHub and
+        share improvements with the community.
       </>
     ),
     cta: {
-      label: 'Zu Diagrammen',
-      to: '/docs/diagrams/diagram-editor',
+      label: 'Contribute ideas',
+      to: 'https://github.com/edigonzales/interlis-ide/issues',
     },
   },
 ];
