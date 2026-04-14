@@ -102,3 +102,28 @@ a:hover {
 .quarto-container-page {
   background: transparent;
 }
+
+/* Add an external-link suffix icon only to the two right-side external navbar links. */
+.navbar a[href="https://www.ech.ch/de/ech/ech-0031/2.1.0"],
+.navbar a[href="https://www.ech.ch/de/ech/ech-0031/2.1.0/"],
+.navbar a[href="https://interlis.ch"],
+.navbar a[href="https://interlis.ch/"] {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.33em;
+  line-height: 1.2;
+}
+
+.navbar a[href="https://www.ech.ch/de/ech/ech-0031/2.1.0"]::after,
+.navbar a[href="https://www.ech.ch/de/ech/ech-0031/2.1.0/"]::after,
+.navbar a[href="https://interlis.ch"]::after,
+.navbar a[href="https://interlis.ch/"]::after {
+  content: "";
+  width: 0.85em;
+  height: 0.85em;
+  flex: 0 0 0.85em;
+  opacity: 0.85;
+  background-color: currentColor;
+  -webkit-mask: url("images/box-arrow-up-right.svg") no-repeat center / contain;
+  mask: url("images/box-arrow-up-right.svg") no-repeat center / contain;
+}
