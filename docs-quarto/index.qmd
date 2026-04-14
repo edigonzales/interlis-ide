@@ -7,9 +7,9 @@ css: index.css
 ---
 
 ::: {.hero-banner}
-# INTERLIS IDE
+# <span class="hero-title-interlis">INTERLIS</span> IDE
 
-## Arbeitsumgebung für INTERLIS-Modelle mit Prüfung, Navigation und Diagrammen.
+## A dedicated workspace for modeling data with INTERLIS.
 
 [Get started](intro.qmd){.btn .btn-action .btn-action-primary role="button"}
 :::

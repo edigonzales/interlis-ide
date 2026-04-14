@@ -6,21 +6,21 @@
   --ili-surface: #ffffff;
   --ili-text: #1f2a37;
   --ili-muted: #5f6b7a;
+  --ili-font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("fonts/Inter-roman.var.woff2") format("woff2");
 }
 
 body {
-  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--ili-font-sans);
   background: var(--ili-bg);
   color: var(--ili-text);
-}
-
-h1, h2, h3, h4, h5, h6,
-.navbar-title,
-.sidebar-title,
-.sidebar-item,
-.nav-link,
-.btn {
-  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
 
 .navbar {
@@ -61,11 +61,14 @@ a:hover {
   display: none;
 }
 
-.nav-footer,
 .footer {
   background: var(--ili-surface);
   border-top: 1px solid rgba(5, 100, 169, 0.12);
   color: var(--ili-muted);
+}
+
+.nav-footer {
+  border-top: 0px !important;
 }
 
 .quarto-container-page {

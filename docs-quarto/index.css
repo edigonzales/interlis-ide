@@ -1,7 +1,4 @@
 :root {
-  --hero-bg-1: #eaf4ff;
-  --hero-bg-2: #f5f9ff;
-  --hero-border: rgba(5, 100, 169, 0.16);
   --hero-text: #0c3e66;
   --hero-subtext: #375c7c;
 }
@@ -12,20 +9,24 @@
 
 .hero-banner {
   margin: 28px auto 26px;
-  padding: 64px 28px 56px;
+  padding: 28px 56px 0px 56px;
   text-align: center;
-  border-radius: 18px;
-  background: linear-gradient(140deg, var(--hero-bg-1) 0%, var(--hero-bg-2) 100%);
-  border: 1px solid var(--hero-border);
-  box-shadow: 0 16px 34px rgba(5, 100, 169, 0.11);
+  border-radius: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .hero-banner h1 {
   margin: 0 0 14px;
   font-size: clamp(2.3rem, 5.5vw, 4.5rem);
-  font-weight: 800;
+  font-weight: 900;
   letter-spacing: -0.02em;
   color: var(--hero-text);
+}
+
+.hero-banner h1 .hero-title-interlis {
+  color: var(--ili-text);
 }
 
 .hero-banner h2 {
@@ -69,7 +70,11 @@
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-  border-radius: 14px;
-  border: 1px solid rgba(5, 100, 169, 0.14);
-  box-shadow: 0 16px 34px rgba(5, 100, 169, 0.15);
+  border-radius: 0;
+  border: 0;
+  box-shadow: none;
+}
+
+.preview-wrap figcaption {
+  display: none;
 }

@@ -75,23 +75,21 @@ website:
           - text: "Probleme beheben"
             href: reference/troubleshooting.qmd
   page-footer:
-    left: "Copyright 2026 Mitwirkende an INTERLIS IDE"
+    left: "Copyright 2025 - 2026, INTERLIS IDE contributors"
 
 format:
   html:
-    theme: cosmo
+    theme:
+      - default
+      - inter-theme.scss
     css: styles.css
     toc: true
     toc-depth: 3
     link-external-newwindow: true
-    mainfont: "Noto Sans"
+    mainfont: Inter
     grid:
       sidebar-width: 290px
       margin-width: 0px
       body-width: 1150px
-    header-includes: |
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
 editor: visual
