@@ -29,6 +29,34 @@ body {
   box-shadow: 0 1px 8px rgba(5, 100, 169, 0.07);
 }
 
+.navbar .navbar-title {
+  font-weight: 700;
+}
+
+.navbar .navbar-brand,
+.navbar .navbar-title,
+.navbar .nav-link,
+.navbar .quarto-navbar-tools a,
+.navbar .quarto-navbar-tools a[aria-label],
+.navbar .navbar-toggler,
+.navbar .navbar-toggler .navbar-toggler-icon {
+  color: var(--ili-text);
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus,
+.navbar .navbar-title:hover,
+.navbar .navbar-title:focus,
+.navbar .nav-link:hover,
+.navbar .nav-link:focus,
+.navbar .nav-link.active,
+.navbar .quarto-navbar-tools a:hover,
+.navbar .quarto-navbar-tools a:focus,
+.navbar .navbar-toggler:hover,
+.navbar .navbar-toggler:focus {
+  color: var(--ili-text);
+}
+
 .navbar-brand-container .navbar-brand .navbar-logo {
   max-height: 30px;
 }
