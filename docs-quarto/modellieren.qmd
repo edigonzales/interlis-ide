@@ -20,9 +20,9 @@ Typische Situationen, in denen dir die Validierung hilft:
 - eine Referenz zeigt auf ein nicht passendes Ziel
 - ein Import oder Modellname ist nicht auflösbar
 
-> Screenshot-Empfehlung: Fehler im Editor mit gleichzeitig geöffneter Problems-Ansicht.
->
-> Screenshot-Empfehlung: Output-Kanal `INTERLIS LSP` nach einem manuellen Compile.
+![](images/modellieren_01.png)
+
+![](images/modellieren_02.png)
 
 Nicht jedes Feedback entsteht auf dieselbe Weise: Während des Tippens zeigt der Editor schnelle Hinweise, beim Speichern wird das Modell zusätzlich vollständig geprüft. Wenn Meldungen unerwartet alt wirken oder Diagramme nicht zum letzten Stand passen, speichere die Datei und starte die Prüfung erneut.
 
@@ -50,14 +50,13 @@ Beispiele für nützliche Vorschläge im Alltag:
 
 Wenn du einen Snippet-Vorschlag übernimmst, kannst du Platzhalter wie üblich mit `Tab` oder `Enter` durchgehen.
 
-> Screenshot-Empfehlung: Completion-Liste bei `MODEL`.
->
-> Screenshot-Empfehlung: Vorschläge in einer Attributdefinition.
->
-> Screenshot-Empfehlung: Vorschläge für Meta-Attribute sowie für `DOMAIN`- oder `UNIT`-Folgeschritte.
+![](images/modellieren_03.png)
+
+![](images/modellieren_04.png)
+
+![](images/modellieren_05.png)
 
 Die Vorschläge werden deutlich besser, wenn das Modell bereits einen brauchbaren Grundzustand hat. Speichere neue Dateien früh und halte Importe aktuell. Wenn Import- oder Typvorschläge fehlen, liegt die Ursache oft nicht an der Vervollständigung selbst, sondern an einem noch nicht auflösbaren Modell oder an fehlenden Repository-Einstellungen.
-
 
 ## Formatierung
 
@@ -74,9 +73,9 @@ Zusätzlich reagiert der Editor in typischen Schreibsituationen direkt im Text. 
 
 Damit sparst du dir wiederkehrende `END`-Zeilen und bleibst schneller in einer korrekten Struktur.
 
-> Screenshot-Empfehlung: Vorher-Nachher-Beispiel einer Formatierung.
->
-> Screenshot-Empfehlung: Eingabe von `=` nach einer Kopfzeile mit automatisch eingefügtem Blockende.
+![](images/modellieren_06a.png)
+
+![](images/modellieren_06b.png)
 
 Wenn eine Formatierung nicht wie erwartet greift, speichere die Datei zuerst und probiere es erneut. Die automatische Einfügung per `=` ist als Schreibhilfe für typische Blöcke gedacht, nicht als universeller Generator für jeden Modellteil. Für einen neuen Modellkopf ist meist ein Snippet oder `INTERLIS: New from Template` der bessere Einstieg.
 
@@ -91,13 +90,10 @@ Für die Navigation stehen dir die gewohnten VS-Code-Werkzeuge zur Verfügung:
 - die Outline gibt dir eine Übersicht über Modelle, Topics, Klassen, Strukturen, Domains und Attribute
 - `F2` startet Rename für das Symbol unter dem Cursor
 
+![](images/modellieren_07.png)
+
 Rename ist besonders hilfreich, wenn du einen Modellnamen, ein Topic, eine Klasse, eine Struktur oder ein Attribut sauber umbenennen willst. Dabei werden nicht nur die Deklaration, sondern auch passende Verwendungen aktualisiert. In lokalen Projektdateien können auch zusammenhängende Stellen über mehrere Dateien hinweg erfasst werden.
 
-> Screenshot-Empfehlung: Sprung zu einer Definition über `Ctrl+Klick`.
->
-> Screenshot-Empfehlung: Rename-Vorschau mit mehreren Treffern.
->
-> Screenshot-Empfehlung: Outline-Ansicht für ein geöffnetes Modell.
 
 Rename ist für Symbole gedacht, nicht für freie Textsuche. Wenn an einer Stelle kein Rename angeboten wird, befindet sich der Cursor oft nicht auf einem definierbaren Modellsymbol. Für die besten Ergebnisse sollte das Modell in einem möglichst konsistenten Zustand sein.
 
@@ -119,8 +115,8 @@ Sobald die Quellen erreichbar und korrekt eingetragen sind, profitierst du an me
 - stabilere Auflösung von Typen und Referenzen
 - vollständigere Validierung bei abhängigen Modellen
 
-> Screenshot-Empfehlung: `IMPORTS`-Vorschlag im Editor.
->
-> Screenshot-Empfehlung: Einstellungen mit `interlisLsp.modelRepositories`.
+![](images/modellieren_08.png)
+
+![](images/modellieren_09.png)
 
 Wenn Vorschläge für Importe fehlen, liegt das oft an einer der drei Ursachen: Das Modell ist noch nicht gespeichert, die Repository-Einstellung ist unvollständig oder die externe Quelle ist nicht erreichbar. Prüfe in solchen Fällen zuerst die Einstellungen und danach den Output-Kanal.

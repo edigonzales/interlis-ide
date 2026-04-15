@@ -2,7 +2,8 @@ project:
   type: website
   preview:
     port: 3000
-    browser: false
+    watch-inputs: true
+
 
 website:
   title: "INTERLIS IDE"

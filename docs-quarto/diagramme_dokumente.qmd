@@ -16,10 +16,6 @@ Im Alltag sind vor allem diese Aktionen relevant:
 
 Das Diagramm zeigt dir die Struktur des Modells, ist aber nicht selbst der Ort für Modelländerungen. Bearbeitet wird weiterhin im Texteditor.
 
-> Screenshot-Empfehlung: Diagrammeditor neben dem Quelltext.
->
-> Screenshot-Empfehlung: Beispiel für Auto-Layout oder Force Refresh.
-
 Der Diagrammeditor ist als Lese- und Review-Werkzeug gedacht. Wenn sich Text und Diagramm unterscheiden, speichere die Datei und aktualisiere das Diagramm. Für Modelländerungen solltest du weiterhin den Texteditor verwenden.
 
 ## UML-Vorschauen und GraphML
@@ -36,9 +32,7 @@ Mermaid eignet sich gut für schnelle Vorschauen und leichte Einbindung in Markd
 
 Je nach Ausgabeform kannst du erzeugte Grafiken direkt weiterverwenden oder in nachgelagerten Werkzeugen weiterbearbeiten.
 
-> Screenshot-Empfehlung: Mermaid- oder PlantUML-Webview.
->
-> Screenshot-Empfehlung: Export-Dialog oder Ergebnisdatei für GraphML.
+![](images/uml_01.png)
 
 Die Ausgaben basieren auf dem aktuellen Modellstand. Wenn Inhalte fehlen oder veraltet wirken, speichere die Datei und starte die Vorschau oder den Export erneut. Für das Verhalten der UML-Ausgaben stehen zusätzliche Optionen in den Einstellungen bereit, etwa zur Anzeige von Attributen oder zur Darstellung abstrakter Typen.
 
@@ -59,8 +53,6 @@ Typische Einsatzfälle:
 - Weitergabe an Projektpartner
 - formale Dokumentationsstufen zwischen Modellversionen
 
-> Screenshot-Empfehlung: HTML-Vorschau eines Modells in der IDE.
->
-> Screenshot-Empfehlung: Ergebnisdatei eines DOCX-Exports im Projektordner.
+![](images/html_01.png)
 
 Die Qualität der Ausgabe hängt direkt am Modellzustand. Speichere das Modell vor einer HTML-Vorschau oder einem DOCX-Export und behebe möglichst zuerst vorhandene Fehler. So vermeidest du veraltete oder unvollständige Dokumentation.

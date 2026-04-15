@@ -53,7 +53,7 @@ Beispiel:
 }
 ```
 
-> Screenshot-Empfehlung: Einstellungen mit gefilterter Suche nach `INTERLIS LSP`.
+![](images/referenz_01.png)
 
 Für die meisten Anwender sind nur wenige Einstellungen wirklich notwendig. Beginne mit `modelRepositories`, wenn Importe aus externen Quellen fehlen, und mit den Diagramm- oder UML-Optionen, wenn du die Visualisierung anpassen willst. Die Laufzeit-Einstellungen für eigenes Java oder eigenes Server-JAR solltest du nur verändern, wenn du bewusst von der mitgelieferten Standardkonfiguration abweichst.
 

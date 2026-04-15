@@ -12,17 +12,17 @@ Die Desktop-Anwendung bringt die INTERLIS-Unterstützung bereits mit. Für die m
 3. Starte die Anwendung mit dem für dein Betriebssystem mitgelieferten Launcher.
 4. Öffne anschliessend einen Projektordner oder erstelle eine neue `.ili`-Datei.
 
-> Screenshot-Empfehlung: Download- oder Marketplace-Ansicht mit markierter Anwendung.
-
 Die Pakete stehen für folgende Plattformen bereit:
 
 - Linux für `x86_64` und `arm64`
 - macOS für Intel und Apple Silicon
 - Windows für `x86_64`
 
+![](images/erste_schritte_01.png)
+
 Oder installiere das Plugin in deiner bestehenden VS Code- oder Codium-Installation.
 
-> Screenshot-Empfehlung: Marketplace-Ansicht mit markierter Anwendung.
+![](images/erste_schritte_02.png)
 
 Eine separate Java-Installation ist im Normalfall nicht notwendig, weil eine passende Laufzeit bereits mitgeliefert wird. Nur wenn du bewusst eine eigene Java-Version oder ein eigenes Server-JAR verwenden willst, brauchst du später die entsprechenden Einstellungen aus der Referenz.
 
@@ -61,8 +61,6 @@ MODEL Beispiel (de)
 END Beispiel.
 ```
 
-> Screenshot-Empfehlung: Command Palette mit `INTERLIS: New from Template`.
->
-> Screenshot-Empfehlung: Modell direkt nach dem Einfügen des Grundgerüsts mit sichtbarer Outline.
+![](images/erste_schritte_03.png)
 
 Wenn du ganz am Anfang nur wenig Vorschläge siehst, ist das oft normal: Viele Hilfen werden besser, sobald der Modellkopf vorhanden ist und die Datei einmal gespeichert wurde. Achte ausserdem darauf, dass die Datei wirklich im Sprachmodus `INTERLIS` geöffnet ist und die Endung `.ili` trägt.
