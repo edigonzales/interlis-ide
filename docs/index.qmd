@@ -11,7 +11,7 @@ css: index.css
 
 ## A dedicated workspace for modeling data with INTERLIS.
 
-[Get started](intro.qmd){.btn .btn-action .btn-action-primary role="button"}
+[Get started](erste_schritte.qmd){.btn .btn-action .btn-action-primary role="button"}
 :::
 
 ::: {.preview-wrap}
