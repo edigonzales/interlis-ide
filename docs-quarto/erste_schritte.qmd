@@ -12,13 +12,17 @@ Die Desktop-Anwendung bringt die INTERLIS-Unterstützung bereits mit. Für die m
 3. Starte die Anwendung mit dem für dein Betriebssystem mitgelieferten Launcher.
 4. Öffne anschliessend einen Projektordner oder erstelle eine neue `.ili`-Datei.
 
+> Screenshot-Empfehlung: Download- oder Marketplace-Ansicht mit markierter Anwendung.
+
 Die Pakete stehen für folgende Plattformen bereit:
 
 - Linux für `x86_64` und `arm64`
 - macOS für Intel und Apple Silicon
 - Windows für `x86_64`
 
-> Screenshot-Empfehlung: Download- oder Marketplace-Ansicht mit markierter Anwendung.
+Oder installiere das Plugin in deiner bestehenden VS Code- oder Codium-Installation.
+
+> Screenshot-Empfehlung: Marketplace-Ansicht mit markierter Anwendung.
 
 Eine separate Java-Installation ist im Normalfall nicht notwendig, weil eine passende Laufzeit bereits mitgeliefert wird. Nur wenn du bewusst eine eigene Java-Version oder ein eigenes Server-JAR verwenden willst, brauchst du später die entsprechenden Einstellungen aus der Referenz.
 
@@ -27,3 +31,38 @@ Unter macOS kann Gatekeeper nach dem Entpacken eingreifen. Falls sich die App ni
 ```bash
 xattr -dr com.apple.quarantine InterlisIDE.app
 ```
+
+## Erstes Modell
+
+Diese Seite führt dich ohne Umwege durch den ersten sinnvollen Arbeitsablauf: Datei anlegen, Modellgerüst einfügen, speichern, Feedback lesen und die ersten Editorhilfen ausprobieren.
+
+1. Öffne einen Projektordner in der IDE.
+2. Lege eine neue Datei mit der Endung `.ili` an oder rufe in der Command Palette `INTERLIS: New from Template` auf.
+3. Speichere die Datei früh, damit Validierung, Navigation und Diagramme auf einem stabilen Stand arbeiten können.
+4. Nutze bei Bedarf `Ctrl+Space`, um Vorschläge einzublenden.
+5. Beobachte die Problems-Ansicht und den Output-Kanal, sobald du das Modell veränderst oder speicherst.
+
+Ein guter Einstieg ist ein kleines Modell mit einem Topic und einer Klasse. Schon bei den ersten Zeilen hilft dir der Editor mit kontextsensitiven Vorschlägen, einer Outline und direkten Fehlermeldungen.
+
+```bash
+INTERLIS 2.4;
+
+MODEL Beispiel (de)
+  AT "https://example.ch"
+  VERSION "2026-04-05"
+  =
+
+  TOPIC Fachthema =
+    CLASS Objekt =
+      Name : TEXT*80;
+    END Objekt;
+  END Fachthema;
+
+END Beispiel.
+```
+
+> Screenshot-Empfehlung: Command Palette mit `INTERLIS: New from Template`.
+>
+> Screenshot-Empfehlung: Modell direkt nach dem Einfügen des Grundgerüsts mit sichtbarer Outline.
+
+Wenn du ganz am Anfang nur wenig Vorschläge siehst, ist das oft normal: Viele Hilfen werden besser, sobald der Modellkopf vorhanden ist und die Datei einmal gespeichert wurde. Achte ausserdem darauf, dass die Datei wirklich im Sprachmodus `INTERLIS` geöffnet ist und die Endung `.ili` trägt.

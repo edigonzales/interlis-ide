@@ -1,0 +1,126 @@
+---
+title: Modellieren
+order: 2
+---
+
+## Validierung und Problems-Ansicht
+
+Die IDE zeigt dir früh, wo ein Modell syntaktisch oder fachlich problematisch ist. So kannst du Fehler dort korrigieren, wo sie entstehen, statt erst am Ende eines Modellierungsschritts.
+
+Während des Tippens erscheinen bereits erste Hinweise direkt im Editor. Nach dem Speichern wird das Modell zusätzlich vollständig geprüft. Die wichtigsten Stellen für dieses Feedback sind:
+
+- der Editor mit Markierungen direkt an der betroffenen Zeile
+- die Problems-Ansicht für eine übersichtliche Liste aller Meldungen
+- der Output-Kanal `INTERLIS LSP` für den Compiler- und Diagnoseverlauf
+
+Typische Situationen, in denen dir die Validierung hilft:
+
+- ein Symbol wird verwendet, bevor es sinnvoll referenziert werden kann
+- ein Name wurde doppelt vergeben
+- eine Referenz zeigt auf ein nicht passendes Ziel
+- ein Import oder Modellname ist nicht auflösbar
+
+> Screenshot-Empfehlung: Fehler im Editor mit gleichzeitig geöffneter Problems-Ansicht.
+>
+> Screenshot-Empfehlung: Output-Kanal `INTERLIS LSP` nach einem manuellen Compile.
+
+Nicht jedes Feedback entsteht auf dieselbe Weise: Während des Tippens zeigt der Editor schnelle Hinweise, beim Speichern wird das Modell zusätzlich vollständig geprüft. Wenn Meldungen unerwartet alt wirken oder Diagramme nicht zum letzten Stand passen, speichere die Datei und starte die Prüfung erneut.
+
+## Vervollständigung und Snippets
+
+Die Vorschläge sind nicht nur Stichwortlisten. Der Editor versucht, an einer Stelle nur das anzubieten, was dort fachlich und syntaktisch sinnvoll ist. Das beschleunigt das Schreiben und reduziert Folgefehler.
+
+Rufe Vorschläge mit `Ctrl+Space` auf oder nutze sie direkt beim Tippen. Besonders hilfreich sind sie in diesen Situationen:
+
+- in Kopfzeilen von `MODEL`, `TOPIC`, `CLASS`, `STRUCTURE`, `DOMAIN` oder `UNIT`
+- in `IMPORTS`-Zeilen für bekannte Modelle
+- bei Typdefinitionen und Referenzen
+- bei `REFERENCE TO`
+- bei `LIST OF` oder `BAG OF`
+- bei Meta-Attributen und typischen Dokumentationsfeldern
+
+Das MODEL-Snippet hilft beim Einstieg, weil es ein konsistentes Grundgerüst liefert. In bestehenden Modellen sind vor allem die Folgevorschläge wichtig: Nach einem Symbolnamen, nach `EXTENDS` oder in Typdefinitionen zeigt die IDE die jeweils passenden nächsten Schritte.
+
+Beispiele für nützliche Vorschläge im Alltag:
+
+- Klassen, Strukturen und Domains als Typen
+- sinnvolle Ziele für Referenzen
+- Modelle aus dem Workspace oder aus konfigurierten Repositories
+- Meta-Attribute für Titel, Kurzbeschreibung, Tags oder Kontaktangaben
+
+Wenn du einen Snippet-Vorschlag übernimmst, kannst du Platzhalter wie üblich mit `Tab` oder `Enter` durchgehen.
+
+> Screenshot-Empfehlung: Completion-Liste bei `MODEL`.
+>
+> Screenshot-Empfehlung: Vorschläge in einer Attributdefinition.
+>
+> Screenshot-Empfehlung: Vorschläge für Meta-Attribute sowie für `DOMAIN`- oder `UNIT`-Folgeschritte.
+
+Die Vorschläge werden deutlich besser, wenn das Modell bereits einen brauchbaren Grundzustand hat. Speichere neue Dateien früh und halte Importe aktuell. Wenn Import- oder Typvorschläge fehlen, liegt die Ursache oft nicht an der Vervollständigung selbst, sondern an einem noch nicht auflösbaren Modell oder an fehlenden Repository-Einstellungen.
+
+
+## Formatierung
+
+Saubere Formatierung macht Modelle besser lesbar und reduziert unnötige Unterschiede in Reviews. Gleichzeitig hilft dir der Editor dabei, typische Blockstrukturen schneller korrekt zu schliessen.
+
+Für die Formatierung des gesamten Dokuments verwendest du den normalen VS-Code-Befehl `Format Document`. Damit wird die aktuelle `.ili`-Datei in eine einheitliche, gut lesbare Form gebracht.
+
+Zusätzlich reagiert der Editor in typischen Schreibsituationen direkt im Text. Wenn du nach bestimmten Kopfzeilen ein `=` eingibst, kann die IDE das passende Blockgerüst einfügen, zum Beispiel für:
+
+- `CLASS`
+- `STRUCTURE`
+- `TOPIC`
+- `VIEW TOPIC`
+
+Damit sparst du dir wiederkehrende `END`-Zeilen und bleibst schneller in einer korrekten Struktur.
+
+> Screenshot-Empfehlung: Vorher-Nachher-Beispiel einer Formatierung.
+>
+> Screenshot-Empfehlung: Eingabe von `=` nach einer Kopfzeile mit automatisch eingefügtem Blockende.
+
+Wenn eine Formatierung nicht wie erwartet greift, speichere die Datei zuerst und probiere es erneut. Die automatische Einfügung per `=` ist als Schreibhilfe für typische Blöcke gedacht, nicht als universeller Generator für jeden Modellteil. Für einen neuen Modellkopf ist meist ein Snippet oder `INTERLIS: New from Template` der bessere Einstieg.
+
+## Navigation, Outline und Rename
+
+Sobald ein Modell etwas grösser wird, brauchst du schnelle Wege durch den Code. Die IDE hilft dir dabei, Definitionen und Verwendungen zu finden und konsistente Umbenennungen ohne manuelle Suchaktionen durchzuführen.
+
+Für die Navigation stehen dir die gewohnten VS-Code-Werkzeuge zur Verfügung:
+
+- `F12` oder `Ctrl+Klick` springt zur Definition
+- `Shift+F12` zeigt Verwendungen
+- die Outline gibt dir eine Übersicht über Modelle, Topics, Klassen, Strukturen, Domains und Attribute
+- `F2` startet Rename für das Symbol unter dem Cursor
+
+Rename ist besonders hilfreich, wenn du einen Modellnamen, ein Topic, eine Klasse, eine Struktur oder ein Attribut sauber umbenennen willst. Dabei werden nicht nur die Deklaration, sondern auch passende Verwendungen aktualisiert. In lokalen Projektdateien können auch zusammenhängende Stellen über mehrere Dateien hinweg erfasst werden.
+
+> Screenshot-Empfehlung: Sprung zu einer Definition über `Ctrl+Klick`.
+>
+> Screenshot-Empfehlung: Rename-Vorschau mit mehreren Treffern.
+>
+> Screenshot-Empfehlung: Outline-Ansicht für ein geöffnetes Modell.
+
+Rename ist für Symbole gedacht, nicht für freie Textsuche. Wenn an einer Stelle kein Rename angeboten wird, befindet sich der Cursor oft nicht auf einem definierbaren Modellsymbol. Für die besten Ergebnisse sollte das Modell in einem möglichst konsistenten Zustand sein.
+
+## Importe und Modell-Repositories
+
+Viele Modelle stehen nicht allein, sondern bauen auf anderen Modellen auf. Die IDE kann solche Abhängigkeiten beim Schreiben und Prüfen berücksichtigen, wenn Workspace und Modell-Repositories sinnvoll eingerichtet sind.
+
+Beim Schreiben einer `IMPORTS`-Zeile bietet dir der Editor bekannte Modelle an. Diese Vorschläge können aus dem aktuellen Workspace oder aus zusätzlich konfigurierten Modell-Repositories stammen.
+
+Wenn dein Team gemeinsame Modellablagen verwendet, trage diese in den Einstellungen unter `interlisLsp.modelRepositories` ein. Sinnvoll sind zum Beispiel:
+
+- ein gemeinsamer lokaler Modellordner
+- ein interner HTTP-Endpunkt mit Modellablagen
+- ein externer Modellserver
+
+Sobald die Quellen erreichbar und korrekt eingetragen sind, profitierst du an mehreren Stellen:
+
+- bessere Vorschläge in `IMPORTS`
+- stabilere Auflösung von Typen und Referenzen
+- vollständigere Validierung bei abhängigen Modellen
+
+> Screenshot-Empfehlung: `IMPORTS`-Vorschlag im Editor.
+>
+> Screenshot-Empfehlung: Einstellungen mit `interlisLsp.modelRepositories`.
+
+Wenn Vorschläge für Importe fehlen, liegt das oft an einer der drei Ursachen: Das Modell ist noch nicht gespeichert, die Repository-Einstellung ist unvollständig oder die externe Quelle ist nicht erreichbar. Prüfe in solchen Fällen zuerst die Einstellungen und danach den Output-Kanal.

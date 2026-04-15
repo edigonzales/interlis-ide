@@ -15,16 +15,17 @@ website:
     search: false
     left:
       - text: "Start"
-        href: index.qmd
+        href: erste_schritte.qmd
       - text: "Dokumentation"
         menu: 
           - text: "Erste Schritte"
             href: erste_schritte.qmd
-          - text: "Deployment"
-            href: deployment.qmd
-          - text: "Development"
-            href: development.qmd      
-        #href: intro.qmd
+          - text: "Modellieren"
+            href: modellieren.qmd
+          - text: "Diagramme und Dokumente"
+            href: diagramme_dokumente.qmd   
+          - text: "Referenz"
+            href: referenz.qmd
     right:
       - text: "INTERLIS-Spezifikation"
         href: https://www.ech.ch/de/ech/ech-0031/2.1.0
@@ -33,54 +34,6 @@ website:
       - icon: github
         href: https://github.com/edigonzales/interlis-ide
         aria-label: GitHub
-  # sidebar:
-  #   style: "docked"
-  #   search: false
-  #   contents:
-  #     - section: "Start"
-  #       contents:
-  #         - text: "INTERLIS IDE im Alltag"
-  #           href: intro.qmd
-  #     - section: "Erste Schritte"
-  #       contents:
-  #         - text: "Installation"
-  #           href: getting-started/installation.qmd
-  #         - text: "Erstes Modell"
-  #           href: getting-started/first-model.qmd
-  #         - text: "5-Minuten-Tour"
-  #           href: getting-started/quick-tour.qmd
-  #         - text: "Konfiguration im Einstieg"
-  #           href: getting-started/configuration.qmd
-  #     - section: "Modellieren in VS Code"
-  #       contents:
-  #         - text: "Validierung und Problems-Ansicht"
-  #           href: editing/validation-and-problems.qmd
-  #         - text: "Vervollständigung und Snippets"
-  #           href: editing/completion-and-snippets.qmd
-  #         - text: "Formatierung"
-  #           href: editing/formatting.qmd
-  #         - text: "Navigation, Outline und Rename"
-  #           href: editing/navigation-and-rename.qmd
-  #         - text: "Importe und Modell-Repositories"
-  #           href: editing/imports-and-repositories.qmd
-  #     - section: "Diagramme und Dokumentation"
-  #       contents:
-  #         - text: "Diagrammeditor"
-  #           href: diagrams/diagram-editor.qmd
-  #         - text: "UML-Vorschauen und GraphML"
-  #           href: diagrams/uml-previews.qmd
-  #         - text: "HTML-Vorschau und DOCX-Export"
-  #           href: diagrams/documentation-output.qmd
-  #     - section: "Referenz"
-  #       contents:
-  #         - text: "Kommandos"
-  #           href: reference/commands.qmd
-  #         - text: "Einstellungen"
-  #           href: reference/settings.qmd
-  #         - text: "Grenzen und Verhalten"
-  #           href: reference/limits-and-behavior.qmd
-  #         - text: "Probleme beheben"
-  #           href: reference/troubleshooting.qmd
   page-footer:
     left: "Copyright 2025 - 2026, INTERLIS IDE contributors"
 
