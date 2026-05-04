@@ -18,19 +18,20 @@ Die Pakete stehen für folgende Plattformen bereit:
 - macOS für Intel und Apple Silicon
 - Windows für `x86_64`
 
-![](images/erste_schritte_01.png)
-
-Oder installiere das Plugin in deiner bestehenden VS Code- oder Codium-Installation.
-
-![](images/erste_schritte_02.png)
-
-Eine separate Java-Installation ist im Normalfall nicht notwendig, weil eine passende Laufzeit bereits mitgeliefert wird. Nur wenn du bewusst eine eigene Java-Version oder ein eigenes Server-JAR verwenden willst, brauchst du später die entsprechenden Einstellungen aus der Referenz.
-
 Unter macOS kann Gatekeeper nach dem Entpacken eingreifen. Falls sich die App nicht öffnen lässt, hilft in vielen Fällen:
 
 ```bash
 xattr -dr com.apple.quarantine InterlisIDE.app
 ```
+
+![](images/erste_schritte_01.png)
+
+### Plugin
+Oder installiere das Plugin in deiner bestehenden VS Code- oder Codium-Installation.
+
+![](images/erste_schritte_02.png)
+
+Eine separate Java-Installation ist im Normalfall nicht notwendig, weil eine passende Laufzeit bereits mitgeliefert wird. Nur wenn du bewusst eine eigene Java-Version oder ein eigenes Server-JAR verwenden willst, brauchst du später die entsprechenden Einstellungen aus der Referenz.
 
 ## Erstes Modell
 
